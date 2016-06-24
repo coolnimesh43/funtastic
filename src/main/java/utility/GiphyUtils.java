@@ -4,14 +4,13 @@
 package utility;
 
 import org.funtastic.enums.GiphyType;
+import org.funtastic.exception.NotValidException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import exception.NotValidException;
 
 /**
  * @author adhpawal

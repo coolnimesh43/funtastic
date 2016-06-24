@@ -5,4 +5,4 @@
  * @author eyeshield
  *
  */
-package exception;
+package org.funtastic.exception;
