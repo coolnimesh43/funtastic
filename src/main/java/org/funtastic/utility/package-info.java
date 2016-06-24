@@ -5,4 +5,4 @@
  * @author adhpaal
  *
  */
-package utility;
+package org.funtastic.utility;

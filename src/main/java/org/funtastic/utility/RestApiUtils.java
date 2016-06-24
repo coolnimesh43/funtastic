@@ -1,4 +1,4 @@
-package utility;
+package org.funtastic.utility;
 
 import org.funtastic.exception.NotValidException;
 import org.springframework.http.HttpEntity;

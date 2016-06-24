@@ -27,6 +27,7 @@
 <script type="text/javascript" src="assets/js/jquery.common.js"></script>
 <script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
 <script type="text/javascript" src="assets/js/chatFunctions.js"></script>
+<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
 <%@ include file="/WEB-INF/templates/_chat.jsp"%>
 </body>
 </html>

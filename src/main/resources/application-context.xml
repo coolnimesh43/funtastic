@@ -10,14 +10,7 @@
 	<!-- Scan base packages for Controller,Repository,Service -->
 	<context:component-scan base-package="org.funtastic" />
 	
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:application.properties</value>
-			</list>
-		</property>
-	</bean>
+	<context:property-placeholder location="classpath:application.properties"/>
 
 	<!-- Enable MVC Annotation -->
 	<mvc:annotation-driven />
