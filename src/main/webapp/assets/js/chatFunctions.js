@@ -3,6 +3,7 @@ funtastic.admin = funtastic.admin || {};
 funtastic.admin.common = funtastic.admin.common || {};
 funtastic.admin.chatFunctions = funtastic.admin.chatFunctions || {};
 var $handlebarHelpers = $handlebarHelpers || {};
+var $websocketFunctions = $websocketFunctions || {};
 (function ( common, $chatFunctions ) {
     "use strict";
     $chatFunctions.init = function () {
@@ -13,6 +14,14 @@ var $handlebarHelpers = $handlebarHelpers || {};
     };
     
     $chatFunctions.eventHandler = function () {
+        
+        $websocketFunctions.init();
+        
+        $(document).on("click", ".no-rounded", function () {
+            console.log('clicked');
+            $websocketFunctions.messageSend();
+        });
+        
     };
     
     /* user chat list block render */
