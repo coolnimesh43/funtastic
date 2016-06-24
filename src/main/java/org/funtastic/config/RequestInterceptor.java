@@ -30,7 +30,7 @@ public class RequestInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
 		HttpSession session = arg0.getSession();
 		if (session.getAttribute("user") == null) {
-			arg1.sendRedirect("/login");
+			arg1.sendRedirect("/funtastic/login");
 		}
 		return true;
 	}

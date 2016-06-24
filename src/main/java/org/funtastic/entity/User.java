@@ -38,7 +38,7 @@ public class User extends AbstractEntity {
 	private String password;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "gender", nullable = false)
+	@Column(name = "gender")
 	private Gender genderType;
 
 	@OneToOne
