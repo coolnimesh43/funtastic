@@ -13,7 +13,9 @@ funtastic.admin.common = funtastic.admin.common || {};
     }
 
     $handlebarHelpers.registerCustomHandlebarHelpers = function () {
-        
+    	 Handlebars.registerHelper("unescape", function ( value ) {
+             return unescape(value);
+         });
     }
 
     $(document).ready(function () {

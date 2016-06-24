@@ -207,8 +207,16 @@
 </script>
 
 <script id="_gifyResponse" type="text/x-handlebars-template">
-{{each detail}}
+{{#each detail}}
 <li class="collection-item avatar">
-	<img src="{{images.original.url}}" alt=""> </li>
+	<img src="{{images.original.url}}" alt="" class="circle"> </li>
+{{/each}}
+</script>
+
+
+<script id="_memeResponse" type="text/x-handlebars-template">
+{{#each detail}}
+<li class="collection-item avatar">
+	<img src="{{unescape url}}" alt="" class="circle"> </li>
 {{/each}}
 </script>

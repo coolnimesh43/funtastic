@@ -14,6 +14,8 @@
 <!-- Compiled and minified JavaScript -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 <link href="assets/css/style.css" rel="stylesheet" />
 <link href="assets/css/custom.css" rel="stylesheet" />
 <link href="https://afeld.github.io/emoji-css/emoji.css"
@@ -28,12 +30,20 @@
 		</div>
 	</div>
 
-  <button data-target="modal1" class="btn modal-trigger">Modal</button>
+	<button data-target="modal1" class="btn modal-trigger">Modal</button>
+	<button data-target="modal2" class="btn modal-trigger">Modal</button>
 
 	<!-- Modal Structure -->
 	<div id="modal2" class="modal bottom-sheet">
 		<div class="modal-content">
 			<ul id="gif-div" class="collection">
+			</ul>
+		</div>
+	</div>
+
+	<div id="modal1" class="modal bottom-sheet"">
+		<div class="modal-content">
+			<ul id="meme-div" class="collection">
 			</ul>
 		</div>
 	</div>
