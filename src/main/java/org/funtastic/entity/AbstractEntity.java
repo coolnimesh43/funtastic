@@ -1,6 +1,9 @@
 package org.funtastic.entity;
 
-@MappedSupperClass
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class AbstractEntity {
 
     @Id
