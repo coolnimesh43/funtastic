@@ -16,9 +16,11 @@ var $websocketFunctions = $websocketFunctions || {};
     $chatFunctions.eventHandler = function () {
         
         $websocketFunctions.init();
+        $websocketFunctions.connect();
         
         $(document).on('click', '.send-button', function () {
-            $websocketFunctions.messageSend();
+            console.log('sendbutton clicked');
+            $websocketFunctions.sendMessage();
         });
         
         $(document).on('click', '.collapse-expand', function ( e ) {

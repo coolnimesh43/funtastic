@@ -4,71 +4,58 @@ var $websocketFunctions = $websocketFunctions || {};
 (function ( common ) {
     var websocketUrl;
     $websocketFunctions.init = function () {
-        var output = $("#response-query");
-        var socketUrl = common.getWebsocketUrl();
-        // websocketUrl = new WebSocket(socketUrl +
-        // $('.login-user-account').data('user-account-id'));
-        websocketUrl = new WebSocket(socketUrl + "1");
-        websocketUrl.onopen = function () {
-            $websocketFunctions.writeResponse();
-        };
-        
-        // Handle messages sent by the server.
-        websocketUrl.onmessage = function ( evt ) {
-            var msg = $.parseJSON(evt.data);
-            if ($(".questions.selected").data("question-id") == msg.questionId) {
-                if (msg.recipentUser.id == msg.user.id) {
-                    $(".question-arbitary-div").before(
-                            "<div class='admin-answer question-common-class'><span class='admin-img'><i class='icon-user'></i></span><span class='pointed-arrow'><span class='admin-text'>" + msg.response
-                                    + "</span></span><a class='hide' title='Flag' href='#'><i class='icon-flag'></i></a></div>");
-                } else {
-                    $(".question-arbitary-div").before(
-                            "<div class='user-question question-common-class'><span class='user-img'><i class='icon-user'></i></span><span class='pointed-arrow-left'><span class='user-text'>" + msg.response
-                                    + "</span></span><a class='hide' title='Flag' href='#'><i class='icon-flag'></i></a></div>");
-                }
-            } else {
-                if ($(".questions[data-question-id=" + msg.questionId + "]") && msg.recipentUser.id != msg.user.id) {
-                    if (!$(".questions[data-question-id=" + msg.questionId + "]").find('.new-message').length > 0) {
-                        $(".questions[data-question-id=" + msg.questionId + "]").find("a").css("color", "#000");
-                        $(".questions[data-question-id=" + msg.questionId + "]").find(".info-vehicle-ask-vehicle").after("<div class='new-message'>new</div>");
-                        $websocketFunctions.renderUnreadQuestionNumber();
-                    }
-                }
+        var stompClient = null;
+        $websocketFunctions.connect = function () {
+            console.log('connect');
+            var socket = new SockJS('/funtastic/chat');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function ( frame ) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/messages', function ( messageOutput ) {
+                    $websocketFunctions.showMessageOutput(JSON.parse(messageOutput.body));
+                });
+            });
+        }
+
+        $websocketFunctions.disconnect = function () {
+            console.log('disconnect');
+            if (stompClient != null) {
+                stompClient.disconnect();
             }
-        };
-        
-        websocketUrl.onclose = function () {
-            websocketUrl.close();
-        };
-        
-        websocketUrl.onerror = function ( error ) {
-            console.log('WebSocket Error: ' + error);
-        };
-    };
-    
-    $websocketFunctions.renderUnreadQuestionNumber = function () {
-        var unreadQuestionNumber = $("#unread-number").html();
-        var number = unreadQuestionNumber.match(/\d+/);
-        var newUnreadNumber = parseInt(number[0]) + 1;
-        $("#unread-number").html('(' + newUnreadNumber + ')');
-    };
-    
-    $websocketFunctions.messageSend = function () {
-        console.log('inside messageSend');
-        var response = $("#response-text").val();
-        var listingQuestionId = $("#query-response").data("listing-question-id");
-        var userId = $('.login-user-account').data('user-account-id');
-        if (response != null && response != "") {
-            websocketUrl.send(JSON.stringify({
-                response : response,
-                questionId : listingQuestionId,
-                userId : userId
+            console.log("Disconnected");
+        }
+
+        $websocketFunctions.sendMessage = function () {
+            console.log("sendMessage");
+            var text = $('.response-box').val();
+            var from = $('.response-box').data('user-id');
+            stompClient.send("/app/chat", {}, JSON.stringify({
+                'from' : from,
+                'text' : text
             }));
         }
-    };
-    
-    $websocketFunctions.writeResponse = function () {
-        var message = $("#response-text").val();
-    };
-    
+
+        $websocketFunctions.showMessageOutput = function ( messageOutput ) {
+            console.log('showMessageOutput');
+            console.log(messageOutput);
+            $('.arbitary-div')
+                    .before(
+                            "<li class='right clearfix'><span class='chat-img pull-right'><span class='chat-img pull-right'><img alt='User Avatar' src='http://bootdey.com/img/Content/user_1.jpg'></span><div class='chat-body clearfix'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"
+                                    + messageOutput.from + "</strong><small class='pull-right text-muted'><i class='fa fa-clock-o'></i>" + messageOutput.time + "</small></div><p>" + messageOutput.text + "</p></div></li></div>");
+            $('.response-box').val("");
+            
+            /*
+             * $('.arbitary-div') .before( "<li class='left clearfix'><span
+             * class='chat-img pull-left'><img alt='User Avatar'
+             * src='http://bootdey.com/img/Content/user_3.jpg'></span><div
+             * class='chat-body clearfix'><div class='chat-body clearfix'><div
+             * class='header'><strong class='primary-font'>" +
+             * messageOutput.from + "</strong><small class='pull-right
+             * text-muted'><i class='fa fa-clock-o'></i>" + messageOutput.time + "</small></div><p>" +
+             * messageOutput.text + "</p></div></li></div>");
+             * $('.response-box').val("");
+             */
+        }
+    }
+
 })(funtastic.admin.common);

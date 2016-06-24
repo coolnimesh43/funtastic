@@ -194,12 +194,13 @@
                     			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. 
                     		</p>
                     	</div>
-                    </li>                    
+                    </li>  
+					<div class="arbitary-div hide"></div>                  
                 </ul>
             </div>
             <div class="chat-box bg-white">
             	<div class="input-group">
-            		<input class="form-control border no-shadow no-rounded response-box" placeholder="Type your message here">
+            		<input class="form-control border no-shadow no-rounded response-box" data-user-id="" placeholder="Type your message here">
             		<span class="input-group-btn send-button">
             			<button class="btn btn-success no-rounded" type="button">Send</button>
             		</span>
