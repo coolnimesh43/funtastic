@@ -1,7 +1,26 @@
-*.class
+# Eclipse setting resources
+.classpath
+.project
+.settings
+${sys:catalina.base}/
+*.log
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*.*~
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Maven resources
+target
+
+Java resources
+*.class
 
 # Package Files #
 *.jar
