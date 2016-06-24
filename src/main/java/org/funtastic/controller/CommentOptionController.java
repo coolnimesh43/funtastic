@@ -5,6 +5,7 @@ package org.funtastic.controller;
 
 import org.funtastic.enums.GiphyType;
 import org.funtastic.exception.NotValidException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +24,13 @@ import utility.ImgFlipUtils;
 @RequestMapping("/comment")
 public class CommentOptionController {
 
+	@Value("${imgflip.api.endpoint}")
+	private String IMG_FLIP_REST_ENDPOINT;
+
 	@RequestMapping(value = "/meme", method = RequestMethod.GET)
 	@ResponseBody
 	public String getMeme() throws NotValidException {
-		System.out.println("paal");
-		return ImgFlipUtils.getMeme();
+		return ImgFlipUtils.getMeme(IMG_FLIP_REST_ENDPOINT + "get_memes");
 	}
 
 	@RequestMapping(value = "/gif/{type}/{searchTerm}", method = RequestMethod.GET)
