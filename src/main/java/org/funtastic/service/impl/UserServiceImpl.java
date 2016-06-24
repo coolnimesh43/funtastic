@@ -74,7 +74,10 @@ public class UserServiceImpl implements UserService, UserAuthService {
 	@Override
 	public User getLoggedInUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Long userId = ((AuditUser) authentication.getPrincipal()).getId();
-		return this.findById(userId);
+		AuditUser user = (AuditUser) authentication.getPrincipal();
+		if (user == null) {
+			return null;
+		}
+		return this.findById(user.getId());
 	}
 }

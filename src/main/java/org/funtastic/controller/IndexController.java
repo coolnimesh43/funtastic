@@ -25,7 +25,7 @@ public class IndexController {
 		ModelAndView mv = new ModelAndView();
 		User loggedInUser = this.userAuthService.getLoggedInUser();
 		if (loggedInUser == null) {
-			mv.setViewName("login");
+			mv.setViewName("loginSignup");
 		}
 		mv.setViewName("dashboard");
 		mv.addObject("user", loggedInUser);
