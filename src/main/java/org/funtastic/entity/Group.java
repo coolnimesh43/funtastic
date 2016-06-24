@@ -1,5 +1,6 @@
 package org.funtastic.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,14 +11,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="app_group")
+@Table(name = "app_group")
 public class Group extends AbstractEntity {
 
-	@Column(name="name",nullable=false)
+	@Column(name = "name", nullable = false)
 	private String name;
-	
-	@ManyToMany(fetch=FetchType.LAZY,mappedBy="groups",cascade=CascadeType.ALL)
-	private List<User> groupUsers;
+
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "groups", cascade = CascadeType.ALL)
+	private List<User> groupUsers = new ArrayList<>();
 
 	public Group() {
 		super();
@@ -48,5 +49,5 @@ public class Group extends AbstractEntity {
 	public String toString() {
 		return "Group [name=" + name + "]";
 	}
-	
+
 }
