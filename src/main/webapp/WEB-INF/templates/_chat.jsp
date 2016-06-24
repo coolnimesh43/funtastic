@@ -4,7 +4,7 @@
             </div>
             <!-- member list -->
             <ul class="friend-list">
-                <li class="active bounceInDown">
+                <li class="active bounceInDown selected">
                 	<a href="#" class="clearfix">
                 		<img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
                 		<div class="friend-name">	
