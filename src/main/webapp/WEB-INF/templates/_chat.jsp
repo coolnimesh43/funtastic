@@ -200,12 +200,12 @@
             </div>
             <div class="chat-box bg-white">
             	<div class="input-group">
-            		<input class="form-control border no-shadow no-rounded response-box" data-user-id="" placeholder="Type your message here">
-            		<span class="input-group-btn send-button">
-            			<button class="btn btn-success no-rounded" type="button">Send</button>
-            		</span>
+					<a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+					<a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+					<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+					<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
             	</div><!-- /input-group -->	
-            </div>  
+            </div>
 </script>
 <script id="_chatOptionsBlock" type="text/x-handlebars-template">
 	<a class="close-btn" href="javascript:void(0);">X</a>
