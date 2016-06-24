@@ -1,9 +1,10 @@
-.selected {
-	background-color : #209e91; 
+body {
+	background: url(../images/blur-bg.jpg) no-repeat scroll center center/cover;
+	font-family: 'Open Sans', sans-serif;
 }
 
-.chat-message{
-	color: black;
+.selected {
+	background-color: #209e91;
 }
 
 .collapse-expand{
@@ -27,4 +28,8 @@
     background: #26a69a none repeat scroll 0 0;
     border: 1px solid;
     color: #fff;
+}
+
+.chat-message {
+	color: black;
 }

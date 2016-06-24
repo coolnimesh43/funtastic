@@ -23,18 +23,24 @@
 			<!-- selected chat -->
 			<div class="col-md-8" id="chatResponseBlock"></div>
 			<div class="bg-white slide-block slide-properties hide" id="chatOptionsBlock"></div>
+			<div class="container bootstrap snippet">
+				<div class="row">
+					<div class="col-md-4" id="chatUserBlock"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/templates/_chat.jsp"%>
 	<script type="text/javascript" src="assets/bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="assets/bower_components/handlebars/handlebars.js"></script>
+	<script type="text/javascript" src="assets/bower_components/Materialize/dist/js/materialize.min.js"></script>
 	<script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.common.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
 	<script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
 	<script type="text/javascript" src="assets/js/websocketFunctions.js"></script>
 	<script type="text/javascript" src="assets/js/chatFunctions.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
 </body>
 </html>

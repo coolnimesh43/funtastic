@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "status")
@@ -29,7 +28,6 @@ public class Status extends AbstractEntity {
 	private User statusBy;
 
 	@Column(name = "state", nullable = false)
-	@NotNull
 	private Boolean state;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

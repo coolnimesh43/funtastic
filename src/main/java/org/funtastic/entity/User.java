@@ -18,51 +18,47 @@ import javax.validation.constraints.NotNull;
 import org.funtastic.enums.Gender;
 
 @Entity
-@Table(name="app_user")
-public class User extends AbstractEntity{
-	
-	@Column(name="first_name",nullable=false)
+@Table(name = "app_user")
+public class User extends AbstractEntity {
+
+	@Column(name = "first_name", nullable = false)
 	@NotNull
 	private String firstName;
-	
-	@Column(name="last_name",nullable=false)
+
+	@Column(name = "last_name", nullable = false)
 	@NotNull
 	private String lastName;
-	
-	@Column(name="email",nullable=false,unique=true)
+
+	@Column(name = "email", nullable = false, unique = true)
 	@NotNull
 	private String email;
-	
-	@Column(name="password",nullable=false)
+
+	@Column(name = "password", nullable = false)
 	@NotNull
 	private String password;
-	
-	@Column(name="salt",nullable=false)
-	@NotNull
-	private String salt;
 
 	@Enumerated(EnumType.STRING)
-    @Column(name = "gender", nullable = false)
-    private Gender genderType;
-	
+	@Column(name = "gender", nullable = false)
+	private Gender genderType;
+
 	@OneToOne
 	private Image profiePic;
-	
-	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinTable(name="user_group",joinColumns={@JoinColumn(name="user_id")},inverseJoinColumns={@JoinColumn(name="group_id")})
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "user_group", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "group_id") })
 	private List<Group> groups;
-	
+
 	public User() {
 		super();
 	}
 
-	public User(String firstName, String lastName, String email, String password, String salt) {
+	public User(String firstName, String lastName, String email, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.salt = salt;
 	}
 
 	public String getFirstName() {
@@ -97,14 +93,6 @@ public class User extends AbstractEntity{
 		this.password = password;
 	}
 
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-
 	public Image getProfiePic() {
 		return profiePic;
 	}
@@ -132,7 +120,7 @@ public class User extends AbstractEntity{
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password
-				+ ", salt=" + salt + ", getId()=" + getId() + "]";
+				+ ", getId()=" + getId() + "]";
 	}
-	
+
 }
