@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Sign in and Sign up - Single Form</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/style-new.css">
-<link rel="stylesheet" href="css/custom.css">
 <link type="text/css" rel="stylesheet" href="assets/bower_components/Materialize/dist/css/materialize.min.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="assets/css/style.css" />
+<link type="text/css" rel="stylesheet" href="assets/css/style-new.css" />
+<link type="text/css" rel="stylesheet" href="assets/css/custom.css" />
 </head>
 <body>
 	<div class="cont_principal">
@@ -34,13 +34,6 @@
 						<input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
 
 						<a href="#" class="link_forgot_pass d_block">Forgot Password ?</a>
-						<div class="terms_and_cons d_none">
-							<p>
-								<input type="checkbox" name="terms_and_cons" />
-								<label for="terms_and_cons">Accept Terms and Conditions.</label>
-							</p>
-
-						</div>
 					</div>
 					<div class="cont_btn">
 						<button class="btn_sign">SIGN IN</button>
