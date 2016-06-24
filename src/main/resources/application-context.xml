@@ -7,6 +7,11 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:application.properties</value>
+		</property>
+	</bean>
 	<!-- Scan base packages for Controller,Repository,Service -->
 	<context:component-scan base-package="org.funtastic" />
 
