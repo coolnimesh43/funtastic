@@ -9,4 +9,8 @@ public interface CommentService extends GenericService<Long, Comment> {
 	List<Comment> findByDescription(String description);
 
 	List<Comment> findAllByStatus(Long statusId);
+
+	List<Comment> findAllByUser(Long userId);
+
+	List<Comment> findAllByCommentType(String commentType);
 }

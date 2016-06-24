@@ -15,4 +15,10 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 	@Query("select c from Comment c where c.status.id=?1")
 	List<Comment> findAllByStatus(Long statusId);
 
+	@Query("select c from Comment c where c.commentBy.id=?1")
+	List<Comment> findAllByUser(Long userId);
+
+	@Query("select c from Comment c where c.commentType=?1")
+	List<Comment> findAllByCommentType(String commentType);
+
 }

@@ -48,4 +48,14 @@ public class CommentServiceImpl implements CommentService {
 		return this.findAllByStatus(statusId);
 	}
 
+	@Override
+	public List<Comment> findAllByUser(Long userId) {
+		return this.commentRepository.findAllByUser(userId);
+	}
+
+	@Override
+	public List<Comment> findAllByCommentType(String commentType) {
+		return this.findAllByCommentType(commentType);
+	}
+
 }
