@@ -9,6 +9,15 @@
 
 	<!-- Scan base packages for Controller,Repository,Service -->
 	<context:component-scan base-package="org.funtastic" />
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+	</bean>
 
 	<!-- Enable MVC Annotation -->
 	<mvc:annotation-driven />
@@ -68,7 +77,7 @@
 	</bean>
 
 	<!-- Declare jpa respository package -->
-	<jpa:repositories base-package="org.funtastic" entity-manager-factory-ref="entityManagerFactory"
+	<jpa:repositories base-package="org.funtastic.repository" entity-manager-factory-ref="entityManagerFactory"
 		transaction-manager-ref="jpaTransactionManager" />
 
 	<!-- Enable Transaction annotation -->
