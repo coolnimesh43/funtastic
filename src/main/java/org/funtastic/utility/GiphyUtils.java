@@ -13,7 +13,7 @@ import com.google.gson.JsonObject;
  *
  */
 public class GiphyUtils {
-
+	
 	/**
 	 * Fetch Giphy Response for given {@link GiphyType}.
 	 * 
@@ -26,7 +26,7 @@ public class GiphyUtils {
 	 */
 	public static String get(String urlEndPoint, String key, GiphyType type, String... searchTerm)
 			throws NotValidException {
-		final String uri = createGiphyEndpoint(urlEndPoint, key, type, searchTerm);
+		final String uri = createGiphyEndpoint("http://api.giphy.com/v1/", "dc6zaTOxFJmzC", type, searchTerm);
 		return RestApiUtils.get(uri);
 	}
 

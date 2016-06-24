@@ -4,7 +4,7 @@ funtastic.admin.commentOption = funtastic.admin.commentOption || {};
 (function($commentOption, commonFunctions) {
 	"use strict";
 	$commentOption.init = function() {
-		$commentOption.fetchGif("search", "a");
+		$commentOption.fetchGif("trending", "a");
 		$commentOption.fetchMeme();
 	};
 
@@ -13,6 +13,11 @@ funtastic.admin.commentOption = funtastic.admin.commentOption || {};
 				+ term;
 		commonFunctions.apiCall(url, "GET", null, function(response) {
 			var jsonData = JSON.parse(response);
+			var templateData = {
+				detail : jsonData
+			};
+			$handlebarHelpers.renderTemplate("#_gifyResponse", templateData,
+					"#gif-div");
 		}, function(error) {
 		});
 	}

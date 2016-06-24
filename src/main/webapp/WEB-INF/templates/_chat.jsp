@@ -198,11 +198,17 @@
                 </ul>
             </div>
             <div class="chat-box bg-white">
-            	<div class="input-group">
-            		<input class="form-control border no-shadow no-rounded" placeholder="Type your message here">
+            	<div class="input-group">  
             		<span class="input-group-btn">
             			<button class="btn btn-success no-rounded" type="button">Send</button>
             		</span>
             	</div><!-- /input-group -->	
-            </div>  
+            </div>
+</script>
+
+<script id="_gifyResponse" type="text/x-handlebars-template">
+{{each detail}}
+<li class="collection-item avatar">
+	<img src="{{images.original.url}}" alt=""> </li>
+{{/each}}
 </script>
