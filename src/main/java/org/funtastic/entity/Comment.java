@@ -15,18 +15,22 @@ import org.funtastic.enums.CommentType;
 @Entity
 @Table(name = "comment")
 public class Comment extends AbstractEntity {
-	
+
 	@Column(name = "description", nullable = false)
 	@NotNull
 	private String description;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name="comment_type",nullable=false)
+	@Column(name = "comment_type", nullable = false)
 	private CommentType commentType;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="comment_by")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "comment_by")
 	private User commentBy;
+
+	@ManyToOne
+	@JoinColumn(name = "status_id")
+	private Status status;
 
 	public Comment() {
 		super();
@@ -63,11 +67,18 @@ public class Comment extends AbstractEntity {
 		this.commentBy = commentBy;
 	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Comment [description=" + description + ", commentType=" + commentType + ", commentBy=" + commentBy
 				+ "]";
 	}
-	
-	
+
 }
