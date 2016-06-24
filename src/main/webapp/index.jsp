@@ -13,11 +13,11 @@
 <link href="assets/css/style.css" rel="stylesheet">
 <div class="container bootstrap snippet">
     <div class="row">
-		<div class="col-md-4 bg-white" id="chatUserBlock">
+		<div class="col-md-4" id="chatUserBlock">
 		</div>
         
         <!-- selected chat -->
-    	<div class="col-md-8 bg-white" id="chatResponseBlock">
+    	<div class="col-md-8" id="chatResponseBlock">
 		</div>        
 	</div>
 </div>
