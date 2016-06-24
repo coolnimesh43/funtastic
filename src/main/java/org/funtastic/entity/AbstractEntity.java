@@ -19,6 +19,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @MappedSuperclass
 public class AbstractEntity implements Serializable{
 
+<<<<<<< HEAD:funtastic/src/main/java/org/funtastic/entity/AbstractEntity.java
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id", unique = true)
@@ -83,4 +84,9 @@ public class AbstractEntity implements Serializable{
 	}
 	
 	
+=======
+    @Id
+    private Long id;
+
+>>>>>>> c478be3f01b84a10b3aff474ad3e40b791945e7b:src/main/java/org/funtastic/entity/AbstractEntity.java
 }

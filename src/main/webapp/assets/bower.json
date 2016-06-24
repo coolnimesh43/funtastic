@@ -1,0 +1,24 @@
+{
+  "name": "funtastic",
+  "version": "1.0.0",
+  "homepage": "https://github.com/coolnimesh43/funtastic",
+  "authors": [
+    "Srijan Bajracharya <srijan.bajracharya@gmail.com>"
+  ],
+  "description": "chatting",
+  "keywords": [
+    "funtastic"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    
+  }
+}
+
