@@ -6,13 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<link href="assets/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link type="text/css" rel="stylesheet" href="assets/bower_components/Materialize/dist/css/materialize.min.css" media="screen,projection" />
-<link href="assets/css/style.css" rel="stylesheet" />
-<link href="assets/css/custom.css" rel="stylesheet" />
 </head>
 <body>
+<link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="assets/bower_components/Materialize/dist/css/materialize.min.css" media="screen,projection" />
+<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets/css/custom.css" rel="stylesheet">
 <div class="container bootstrap snippet">
     <div class="row">
 		<div class="col-md-4" id="chatUserBlock">

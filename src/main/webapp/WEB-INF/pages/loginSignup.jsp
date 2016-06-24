@@ -12,7 +12,7 @@
 	<div class="cont_principal">
 		<div class="cont_centrar">
 			<div class="cont_login">
-				<form action="">
+				<form action='/j_spring_security_check' method='POST'>
 					<div class="cont_tabs_login">
 						<ul class='ul_tabs'>
 							<li class="active">
@@ -28,12 +28,12 @@
 					<div class="cont_text_inputs">
 						<input type="text" class="input_form_sign " placeholder="NAME" name="name_us" />
 
-						<input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="emauil_us" />
+						<input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="j_username" />
 
-						<input type="password" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us" />
-						<input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
+						<input type="password" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="j_password" />
+						<input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="j_password" />
 
-						<a href="#" class="link_forgot_pass d_block">Forgot Password ?</a>
+						<a href="void:javascript(0)" class="link_forgot_pass d_block">Forgot Password ?</a>
 					</div>
 					<div class="cont_btn">
 						<button class="btn_sign">SIGN IN</button>
