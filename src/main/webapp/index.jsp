@@ -26,6 +26,7 @@
 <script type="text/javascript" src="assets/bower_components/handlebars/handlebars.js"></script>
 <script type="text/javascript" src="assets/js/jquery.common.js"></script>
 <script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
+<script type="text/javascript" src="assets/js/websocketFunctions.js"></script>
 <script type="text/javascript" src="assets/js/chatFunctions.js"></script>
 <%@ include file="/WEB-INF/templates/_chat.jsp"%>
 </body>
