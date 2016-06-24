@@ -24,13 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CommentOptionController {
 
 	@Value("${imgflip.api.endpoint}")
-	private String IMG_FLIP_REST_ENDPOINT;
+	private String IMG_FLIP_REST_ENDPOINT = "https://api.imgflip.com/";
 
 	@Value("${giphy.access.key}")
-	private static String GIPHY_PUBLIC_KEY;
+	private static String GIPHY_PUBLIC_KEY = "dc6zaTOxFJmzC";
 
 	@Value("${giphy.api.endpoint}")
-	private static String GIPHY_REST_ENDPOINT;
+	private static String GIPHY_REST_ENDPOINT = "http://api.giphy.com/v1/";
 
 	@RequestMapping(value = "/meme", method = RequestMethod.GET)
 	@ResponseBody
