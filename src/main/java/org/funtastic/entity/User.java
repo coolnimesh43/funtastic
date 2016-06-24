@@ -1,9 +1,16 @@
 package org.funtastic.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -11,7 +18,7 @@ import javax.validation.constraints.NotNull;
 import org.funtastic.enums.Gender;
 
 @Entity
-@Table(name="user")
+@Table(name="app_user")
 public class User extends AbstractEntity{
 	
 	@Column(name="first_name",nullable=false)
@@ -22,7 +29,7 @@ public class User extends AbstractEntity{
 	@NotNull
 	private String lastName;
 	
-	@Column(name="email",nullable=false)
+	@Column(name="email",nullable=false,unique=true)
 	@NotNull
 	private String email;
 	
@@ -40,6 +47,10 @@ public class User extends AbstractEntity{
 	
 	@OneToOne
 	private Image profiePic;
+	
+	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@JoinTable(name="user_group",joinColumns={@JoinColumn(name="user_id")},inverseJoinColumns={@JoinColumn(name="group_id")})
+	private List<Group> groups;
 	
 	public User() {
 		super();
@@ -108,6 +119,14 @@ public class User extends AbstractEntity{
 
 	public void setGenderType(Gender genderType) {
 		this.genderType = genderType;
+	}
+
+	public List<Group> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
 	}
 
 	@Override

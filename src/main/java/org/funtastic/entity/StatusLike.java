@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="status_like")
-public class StatusLike {
+public class StatusLike extends AbstractEntity {
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="status")
