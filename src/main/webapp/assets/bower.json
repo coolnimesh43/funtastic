@@ -21,6 +21,8 @@
     "handlebars": "4.0.5",
     "jquery": "~2.1.4",
     "jquery-validation": "1.14.0",
-    "Materialize": "materialize#~0.97.6"
+    "Materialize": "materialize#~0.97.6",
+    "font-awesome": "~4.5.0",
+    "bootstrap": "~3.3.6"
   }
 }

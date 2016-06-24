@@ -5,15 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
 <div class="container bootstrap snippet">
     <div class="row">
 		<div class="col-md-4 bg-white" id="chatUserBlock">
+            
 		</div>
         
         <!-- selected chat -->
