@@ -2,7 +2,6 @@ package org.funtastic.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.funtastic.entity.User;
 import org.funtastic.service.UserAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,24 +10,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/")
-public class IndexController {
+@RequestMapping("/dashboard")
+public class DashboardController {
 
-	private static final Logger LOG = LogManager.getLogger(IndexController.class);
+	private static final Logger LOG = LogManager.getLogger(DashboardController.class);
 
 	@Autowired
 	private UserAuthService userAuthService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView getIndexPage() {
-		LOG.debug("Inside IndexController#getIndexPage method.");
+	public ModelAndView get() {
+		LOG.debug("Inside DashboardController#get method.");
 		ModelAndView mv = new ModelAndView();
-		User loggedInUser = this.userAuthService.getLoggedInUser();
-		if (loggedInUser == null) {
-			mv.setViewName("login");
-		}
 		mv.setViewName("dashboard");
-		mv.addObject("user", loggedInUser);
+		mv.addObject("user", this.userAuthService.getLoggedInUser());
 		return mv;
 	}
 }
