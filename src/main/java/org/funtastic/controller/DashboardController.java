@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/dashboard")
+// @Secured("IS_AUTHENTICATED_FULLY")
 public class DashboardController {
 
 	private static final Logger LOG = LogManager.getLogger(DashboardController.class);

@@ -96,7 +96,7 @@
 		</mvc:interceptor> </mvc:interceptors> -->
 
 	<!-- import spring security configuration file -->
-	<!-- <import resource="classpath:spring-security-config.xml" /> -->
+<!-- 	<import resource="classpath:spring-security-config.xml" /> -->
 
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
