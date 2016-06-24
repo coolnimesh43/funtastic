@@ -1,8 +1,12 @@
-.selected {
-	background-color : #209e91; 
+body {
+	background: url(../images/blur-bg.jpg) no-repeat scroll center center/cover;
+	font-family: 'Open Sans', sans-serif;
 }
 
-.chat-message{
+.selected {
+	background-color: #209e91;
+}
+
+.chat-message {
 	color: black;
 }
-

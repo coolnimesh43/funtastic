@@ -10,6 +10,7 @@
 <body>
 <link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="assets/bower_components/Materialize/dist/css/materialize.min.css" media="screen,projection" />
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/custom.css" rel="stylesheet">
 <div class="container bootstrap snippet">
@@ -24,11 +25,13 @@
 </div>
 <script type="text/javascript" src="assets/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="assets/bower_components/Materialize/dist/js/materialize.min.js"></script>
 <script type="text/javascript" src="assets/bower_components/handlebars/handlebars.js"></script>
 <script type="text/javascript" src="assets/js/jquery.common.js"></script>
 <script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
 <script type="text/javascript" src="assets/js/chatFunctions.js"></script>
 <script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
+<script type="text/javascript" src="assets/bower_components/Materialize/dist/js/materialize.min.js"></script>
 <%@ include file="/WEB-INF/templates/_chat.jsp"%>
 </body>
 </html>
