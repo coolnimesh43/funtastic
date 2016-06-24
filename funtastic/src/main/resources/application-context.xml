@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Scan base packages for Controller,Repository,Service -->
+	<context:component-scan base-package="org.funtastic" />
+
+	<!-- Enable MVC Annotation -->
+	<mvc:annotation-driven />
+	
+	<!-- Enable MVC resources(jsp,css,js,etc.) mapping location -->
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+
+	<!-- Set View Resolver for view(jsp) pages -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- Set new data source for amlf-app. You cannot use same data source for multiple transaction manager. -->
+	<bean id="funtastic" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>
+
+	<!-- Set entity manager factory for jpa -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource">
+			<ref bean="funtastic" />
+		</property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<!-- <prop key="hibernate.show_sql">${hibernate.show_sql}</prop> -->
+				<!-- <prop key="hibernate.format_sql">${hibernate.format_sql}</prop> -->
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+			</props>
+		</property>
+		<property name="packagesToScan" value="org.funtastic" />
+	</bean>
+
+	<!-- Set transaction manager: JpaTransactionManager for amlf-app -->
+	<bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory">
+			<ref bean="entityManagerFactory" />
+		</property>
+	</bean>
+
+	<!-- Declare jpa respository package -->
+	<jpa:repositories base-package="org.funtastic" entity-manager-factory-ref="entityManagerFactory"
+		transaction-manager-ref="jpaTransactionManager" />
+
+	<!-- Enable Transaction annotation -->
+	<tx:annotation-driven transaction-manager="jpaTransactionManager" />
+
+	<bean id="springSecurityAuditoraAware" class="org.funtastic.config.SpringSecurityAuditorAware"></bean>
+
+	<!-- Enable spring auditing -->
+	<jpa:auditing auditor-aware-ref="springSecurityAuditoraAware" />
+
+<!-- 	<bean id="customUserDetailsServiceImpl" class="com.lftechnology.amlf.core.service.impl.CustomUserDetailsServiceImpl" /> -->
+
+	<!-- Spring Request interceptor -->
+	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/v1/**" /> <bean class="com.lftechnology.amlf.app.rest.config.RestRequestInterceptor"></bean> 
+		</mvc:interceptor> </mvc:interceptors> -->
+
+	<!-- import spring security configuration file -->
+<!-- 	<import resource="classpath:spring-security-config.xml" /> -->
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- max file size in bytes -->
+		<property name="maxUploadSize" value="20000000" />
+		<!-- other properties... -->
+	</bean>
+
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+</beans>

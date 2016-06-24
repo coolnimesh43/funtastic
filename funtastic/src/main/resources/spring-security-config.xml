@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/security 
+      http://www.springframework.org/schema/security/spring-security.xsd
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<http use-expressions="true">
+		<access-denied-handler error-page="/dashboard" />
+		<intercept-url pattern="/resources/**" access="permitAll" />
+		<form-login login-page='/login' default-target-url="/dashboard" authentication-failure-url="/login/fail" login-processing-url="/j_spring_security_check"
+			username-parameter="j_username" password-parameter="j_password" authentication-success-handler-ref="customAuthenticationSuccessHandler" />
+		<logout logout-success-url="/login" invalidate-session="true" logout-url="/j_spring_security_logout" />
+<!-- 		<access-denied-handler ref="accessDeniedHandler" /> -->
+		<csrf />
+		<headers>
+			<frame-options policy="SAMEORIGIN" />
+		</headers>
+	</http>
+<!-- 	<beans:bean id="accessDeniedHandler" class="com.lftechnology.amlf.app.config.CustomAccessDeniedHandler"></beans:bean> -->
+
+<!-- 	<beans:bean id="customAuthenticationSuccessHandler" class="com.lftechnology.amlf.app.springsecurity.CustomAuthenticationSuccessHandler" /> -->
+
+	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg name="strength" value="11" />
+	</beans:bean>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="customUserDetailsServiceImpl">
+		</authentication-provider>
+	</authentication-manager>
+
+	<global-method-security secured-annotations="enabled" />
+</beans:beans>
