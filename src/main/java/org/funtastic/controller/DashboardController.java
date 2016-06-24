@@ -1,5 +1,7 @@
 package org.funtastic.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.funtastic.service.UserAuthService;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/dashboard")
+// @Secured("IS_AUTHENTICATED_FULLY")
 public class DashboardController {
 
 	private static final Logger LOG = LogManager.getLogger(DashboardController.class);
@@ -19,11 +22,11 @@ public class DashboardController {
 	private UserAuthService userAuthService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView get() {
+	public ModelAndView get(HttpSession session) {
 		LOG.debug("Inside DashboardController#get method.");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("dashboard");
-		mv.addObject("user", this.userAuthService.getLoggedInUser());
+		mv.addObject("user", session.getAttribute("user"));
 		return mv;
 	}
 }

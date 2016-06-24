@@ -91,9 +91,14 @@
 	<bean id="customUserLoginServiceImpl" class="org.funtastic.config.CustomUserLoginServiceImpl" />
 
 	<!-- Spring Request interceptor -->
-	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/v1/**" /> 
-		<bean class="com.lftechnology.amlf.app.rest.config.RestRequestInterceptor"></bean> 
-		</mvc:interceptor> </mvc:interceptors> -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/login/**"/>
+			<mvc:exclude-mapping path="/signup/**"/>
+			<bean class="org.funtastic.config.RequestInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<!-- import spring security configuration file -->
 	<!-- <import resource="classpath:spring-security-config.xml" /> -->
