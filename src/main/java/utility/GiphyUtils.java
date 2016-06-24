@@ -6,11 +6,8 @@ package utility;
 import org.funtastic.enums.GiphyType;
 import org.funtastic.exception.NotValidException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 /**
  * @author adhpawal
@@ -34,18 +31,9 @@ public class GiphyUtils {
 	 * @return {@link JsonObject}
 	 * @throws NotValidException
 	 */
-	public static JsonObject get(GiphyType type, String... searchTerm) throws NotValidException {
+	public static String get(GiphyType type, String... searchTerm) throws NotValidException {
 		final String uri = createGiphyEndpoint(type, searchTerm);
-		RestTemplate restTemplate = new RestTemplate();
-		String result = null;
-		try {
-			result = restTemplate.getForObject(uri, String.class);
-		} catch (RestClientException rce) {
-			throw new NotValidException("Invalid");
-		}
-		JsonParser jsonParser = new JsonParser();
-		JsonObject jo = (JsonObject) jsonParser.parse(result);
-		return jo;
+		return RestApiUtils.get(uri);
 	}
 
 	/**
