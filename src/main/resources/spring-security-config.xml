@@ -12,7 +12,7 @@
 		<access-denied-handler error-page="/dashboard" />
 		<intercept-url pattern="/assets/**" access="permitAll" />
 		<form-login login-page='/login' default-target-url="/dashboard" authentication-failure-url="/login/fail" login-processing-url="/j_spring_security_check"
-			username-parameter="j_username" password-parameter="j_password" authentication-success-handler-ref="customAuthenticationSuccessHandler" />
+			username-parameter="j_username" password-parameter="j_password" />
 		<logout logout-success-url="/login" invalidate-session="true" logout-url="/j_spring_security_logout" />
 <!-- 		<access-denied-handler ref="accessDeniedHandler" /> -->
 		<csrf />
@@ -29,7 +29,7 @@
 	</beans:bean>
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="customUserDetailsServiceImpl">
+		<authentication-provider user-service-ref="customUserLoginServiceImpl">
 		</authentication-provider>
 	</authentication-manager>
 

@@ -1,10 +1,14 @@
 package org.funtastic.config;
 
+import java.util.HashSet;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.funtastic.entity.User;
+import org.funtastic.pojo.AuditUser;
 import org.funtastic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,8 +29,8 @@ public class CustomUserLoginServiceImpl implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("Invalid UserName");
 		}
-
-		return null;
+		return new AuditUser(userName, user.getPassword(), true, true, true, true, new HashSet<GrantedAuthority>(),
+				user.getId());
 	}
 
 }
