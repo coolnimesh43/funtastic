@@ -2,6 +2,7 @@ package org.funtastic.config;
 
 import java.util.List;
 
+import org.funtastic.entity.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,8 +20,7 @@ public class SpringSecurityAuditorAware implements AuditorAware<Long> {
             if ("anonymousUser".equals(authentication.getPrincipal()) || "ROLE_ANONYMOUS".equals(authorityList.get(0).getAuthority())) {
                 return 0L;
             } else {
-//                return ((AuditUser) authentication.getPrincipal()).getId();
-            	return 0L;
+                return ((User) authentication.getPrincipal()).getId();
             }
         } else {
             return null;
