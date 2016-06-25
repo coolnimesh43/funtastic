@@ -65,8 +65,11 @@ public class GroupController {
         LOG.debug("GroupController#add Group: {}", group);
         User user = (User) session.getAttribute("user");
         if (user != null) {
-            group.getGroupUsers().add(user);
-            group = this.groupService.save(group);
+            user = this.userService.findById(user.getId());
+            group.setCreatedBy(user.getId());
+            group.setUpdatedBy(user.getId());
+            // group.getGroupUsers().add(user);
+            // group = this.groupService.save(group);
             user.getGroups().add(group);
             this.userService.save(user);
             return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.TRUE, ""), HttpStatus.OK);
@@ -84,8 +87,8 @@ public class GroupController {
             if (eGroup != null) {
                 User eUser = this.userService.findById(userId);
                 if (eUser != null) {
-                    eGroup.getGroupUsers().add(eUser);
-                    eGroup = this.groupService.save(eGroup);
+                    // eGroup.getGroupUsers().add(eUser);
+                    // eGroup = this.groupService.save(group);
                     eUser.getGroups().add(eGroup);
                     this.userService.save(eUser);
                     return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.TRUE, ""), HttpStatus.OK);

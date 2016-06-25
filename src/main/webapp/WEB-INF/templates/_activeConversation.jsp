@@ -30,7 +30,7 @@
     </select>
     <label>Add User</label>
   </div>
-   <input type="hidden" value="" id="group-id"/>
+   <input type="hidden" value="{{groupId}}" id="group-id"/>
 	<button class="btn waves-effect waves-light" type="button" name="add-user-group">Submit
    	 <i class="material-icons right">send</i>
   	</button> 

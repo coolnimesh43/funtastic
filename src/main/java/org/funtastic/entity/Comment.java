@@ -1,5 +1,8 @@
 package org.funtastic.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,11 +10,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.funtastic.enums.CommentType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -34,6 +40,11 @@ public class Comment extends AbstractEntity {
 	@JoinColumn(name = "status_id")
 	@JsonManagedReference
 	private Status status;
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@OrderBy("createdDate ASC")
+	@JsonBackReference
+	List<CommentLike> commentLikes;
 
 	public Comment() {
 		super();
@@ -76,6 +87,14 @@ public class Comment extends AbstractEntity {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public List<CommentLike> getCommentLikes() {
+		return commentLikes;
+	}
+
+	public void setCommentLikes(List<CommentLike> commentLikes) {
+		this.commentLikes = commentLikes;
 	}
 
 	@Override

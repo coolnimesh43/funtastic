@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.funtastic.entity.Comment;
+import org.funtastic.entity.CommentLike;
 import org.funtastic.entity.User;
 import org.funtastic.enums.GiphyType;
 import org.funtastic.exception.NotValidException;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -50,13 +52,13 @@ public class CommentOptionController {
 	@Value("${giphy.api.endpoint}")
 	private static String GIPHY_REST_ENDPOINT = "http://api.giphy.com/v1/";
 
-	@RequestMapping(value = "/meme", method = RequestMethod.GET,produces = "application/json")
+	@RequestMapping(value = "/meme", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<?> getMeme() throws NotValidException {
 		return new ResponseEntity<>(ImgFlipUtils.getMeme(IMG_FLIP_REST_ENDPOINT + "get_memes"), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/gif/{type}/{searchTerm}", method = RequestMethod.GET,produces = "application/json")
+	@RequestMapping(value = "/gif/{type}/{searchTerm}", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<?> get(@PathVariable("type") String type, @PathVariable("searchTerm") String term)
 			throws NotValidException {
@@ -64,14 +66,40 @@ public class CommentOptionController {
 				GiphyUtils.get(GIPHY_PUBLIC_KEY, GIPHY_REST_ENDPOINT, GiphyType.getEnum(type), term), HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ResponseEntity<ResponsePOJO> add(HttpSession session, @Valid @ModelAttribute Comment comment) {
 		LOG.debug("CommentOptionController#get");
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
+			comment.setCreatedBy(user.getId());
+			comment.setUpdatedBy(user.getId());
 			Comment saved = this.commentService.save(comment);
 			if (saved != null) {
 				return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.TRUE, ""), HttpStatus.OK);
 			}
+		}
+		return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.FALSE, "Invalid comment data"),
+				HttpStatus.BAD_REQUEST);
+	}
+
+	@RequestMapping(value = "/add/like", method = RequestMethod.POST)
+	public ResponseEntity<ResponsePOJO> addLike(HttpSession session, @RequestParam("commentId") Long commentId) {
+		LOG.debug("CommentOptionController#addLike");
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			Comment comment = this.commentService.findById(commentId);
+			if (comment != null) {
+				CommentLike commentLike = new CommentLike();
+				commentLike.setLikedBy(user);
+				commentLike.setCreatedBy(user.getId());
+				commentLike.setUpdatedBy(user.getId());
+				comment.getCommentLikes().add(commentLike);
+				Comment saved = this.commentService.save(comment);
+				if (saved != null) {
+					return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.TRUE, ""), HttpStatus.OK);
+				}
+			}
+
 		}
 		return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.FALSE, "Invalid comment data"),
 				HttpStatus.BAD_REQUEST);
