@@ -6,16 +6,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
-@Table(name="comment_like")
+@Table(name = "comment_like")
 public class CommentLike extends AbstractEntity {
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="comment")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "comment_id")
+	@JsonManagedReference
 	private Comment comment;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="liked_by")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "liked_by")
 	private User likedBy;
 
 	public CommentLike() {
@@ -48,6 +51,5 @@ public class CommentLike extends AbstractEntity {
 	public String toString() {
 		return "CommentLike [comment=" + comment + ", likedBy=" + likedBy + "]";
 	}
-	
-	
+
 }
