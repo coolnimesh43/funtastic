@@ -30,6 +30,24 @@ body {
     color: #fff;
 }
 
-.chat-message {
+.chat-message,header#conversation-title, input {
 	color: black;
+}
+
+.demo-header.mdl-layout__header.mdl-color--grey-100.mdl-color-text--grey-600 {
+    margin-left: 240px;
+}
+header#conversation-title .mdl-layout__header-row{
+	height: 35px;
+}
+header#conversation-title {
+	display: block;
+	margin-left : ;
+	margin-right: ''
+}
+header#conversation-title table{
+	float: left !important;
+} 
+#slider{
+	margin: auto !important;
 }

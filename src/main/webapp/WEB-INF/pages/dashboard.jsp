@@ -92,6 +92,7 @@
 	<script type="text/javascript" src="assets/bower_components/handlebars/handlebars.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.common.js"></script>
 	<script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
+	<script type="text/javascript" src="assets/js/smiley-slider.js"></script>
 	<script type="text/javascript" src="assets/js/dashboard.js"></script>
 	<script type="text/javascript" src="assets/js/chatFunctions.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
