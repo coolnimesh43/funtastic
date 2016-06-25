@@ -66,9 +66,8 @@
 			</div>
 			<main class="mdl-layout__content">
 			<div class="mdl-grid demo-content">
-				<div class="demo-graphs mdl-shadow--2dp mdl-cell mdl-cell--8-col">
-					<div class="col-md-8" id="chatResponseBlock"></div>
-				</div>
+				<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" id="user-add-section"></div>
+				<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" id="existing-user-add-section"></div>
 				<div class="demo-options mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--4-col-desktop">
 					<div class="col-md-8" id="conversationParticipants"></div>
 				</div>
@@ -104,25 +103,6 @@
 			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
 		</div>
 	</div>
-	<div id="modal2" class="modal bottom-sheet">
-		<div class="modal-content">
-			<ul id="gif-div" class="collection">
-			</ul>
-		</div>
-	</div>
 
-	<!-- Modal Structure -->
-	<div id="modal3" class="modal bottom-sheet">
-		<div class="modal-content">
-			<ul id="meme-div" class="collection">
-			</ul>
-		</div>
-	</div>
-	<div id="modal4" class="modal bottom-sheet">
-		<div class="modal-content">
-			<ul id="gif-random" class="collection">
-			</ul>
-		</div>
-	</div>
 </body>
 </html>

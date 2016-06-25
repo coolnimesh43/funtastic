@@ -74,9 +74,19 @@ header#conversation-title table {
 #conversationParticipants {
 	width: 100%;
 }
+
+li.collection-item.avatar {
+    display: inline-block;
+    margin: 10px 5px;
+    cursor: pointer;
+    padding: 10px 5px;
+    /* width:74px; */
+}
+
 #chatResponseBlock.col-md-8 {
     width: 100%;
 }
+
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
 	padding: 5px 40px !important;
 }

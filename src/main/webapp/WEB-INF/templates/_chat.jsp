@@ -176,10 +176,10 @@
             </div>
             <div class="chat-box bg-white"> 
             	<div class="input-group">
-					<a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
-					<a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
-					<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
-					<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+					<a class="waves-effect waves-light btn modal-trigger random-button" href="#modal1"><i class="material-icons left">cloud</i>RANDOM</a>
+					<a class="waves-effect waves-light btn modal-trigger trending-button" href="#modal2"><i class="material-icons left">cloud</i>TRENDING</a>
+					<a class="waves-effect waves-light btn modal-trigger meme-button" href="#modal3"><i class="material-icons right">cloud</i>MEME</a>
+					<a class="waves-effect waves-light btn modal-trigger emoji-button" href="#modal4"><i class="material-icons right">cloud</i>EMOJI</a>
             	</div><!-- /input-group -->	
             </div>
 </script>
