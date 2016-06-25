@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 
 import org.funtastic.enums.CommentType;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "comment")
 public class Comment extends AbstractEntity {
@@ -24,12 +26,13 @@ public class Comment extends AbstractEntity {
 	@Column(name = "comment_type", nullable = false)
 	private CommentType commentType;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "comment_by")
 	private User commentBy;
 
 	@ManyToOne
 	@JoinColumn(name = "status_id")
+	@JsonManagedReference
 	private Status status;
 
 	public Comment() {

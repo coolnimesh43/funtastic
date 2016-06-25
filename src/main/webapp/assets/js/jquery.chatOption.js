@@ -5,6 +5,7 @@ funtastic.admin.commentOption = funtastic.admin.commentOption || {};
 	"use strict";
 	$commentOption.init = function() {
 		$handlebarHelpers.registerCustomHandlebarHelpers();
+		$('.modal-trigger').leanModal();
 		$commentOption.fetchGif("trending", "a");
 		$commentOption.fetchMeme();
 	};

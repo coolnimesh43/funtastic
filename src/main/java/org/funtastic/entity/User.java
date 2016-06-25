@@ -13,10 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.funtastic.enums.Gender;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "app_user")
@@ -49,6 +52,8 @@ public class User extends AbstractEntity {
 	@JoinTable(name = "user_group", joinColumns = {
 			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "group_id", referencedColumnName = "id") })
+	@OrderBy("name ASC")
+	@JsonBackReference
 	private List<Group> groups = new ArrayList<>();
 
 	public User() {

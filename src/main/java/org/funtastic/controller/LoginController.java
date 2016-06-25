@@ -8,7 +8,6 @@ import org.funtastic.entity.User;
 import org.funtastic.pojo.UserDTO;
 import org.funtastic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +37,7 @@ public class LoginController {
 		User user = this.userService.findByEmail(userDTO.getEmail());
 		ModelAndView mv = new ModelAndView();
 		if (user == null) {
-			throw new UsernameNotFoundException("Invalid UserName");
+			return "redirect:/login";
 		}
 		if (user.getPassword().equals(userDTO.getPassword())) {
 			session.setAttribute("user", user);
