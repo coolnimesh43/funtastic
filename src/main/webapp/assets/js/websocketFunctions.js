@@ -27,11 +27,12 @@ var $websocketFunctions = $websocketFunctions || {};
 
         $websocketFunctions.sendMessage = function () {
             console.log("sendMessage");
-            var text = $('.response-box').val();
+            var src = $(this).find('img').prop('src');
             var from = $('.response-box').data('user-id');
             stompClient.send("/app/chat", {}, JSON.stringify({
                 'from' : from,
-                'text' : text
+                'text' : src,
+                'type' : 'img'
             }));
         }
 
