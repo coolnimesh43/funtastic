@@ -99,6 +99,7 @@
 			<mvc:exclude-mapping path="assets/**"/>
 			<mvc:exclude-mapping path="/signup/**"/>
 			<mvc:exclude-mapping path="/assets/**"/>
+			<mvc:exclude-mapping path="/chat/**"/>
 			<bean class="org.funtastic.config.RequestInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

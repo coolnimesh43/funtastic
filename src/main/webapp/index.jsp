@@ -8,11 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<link
-		href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css"
-		rel="stylesheet">
-	<link href="assets/bower_components/font-awesome/css/font-awesome.css"
-		rel="stylesheet">
+	<link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
 	<link href="assets/css/style.css" rel="stylesheet">
 	<link href="assets/css/custom.css" rel="stylesheet">
 	<div class="container bootstrap snippet">
@@ -57,8 +54,7 @@
 	<%@ include file="/WEB-INF/templates/_chat.jsp"%>
 	<script type="text/javascript"
 		src="assets/bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript"
 		src="assets/bower_components/handlebars/handlebars.js"></script>
 	<script type="text/javascript"
