@@ -265,7 +265,7 @@ var $websocketFunctions = $websocketFunctions || {};
 				}
 			};
 			$.ajax({
-				url : commonFunctions.getBaseUrl() + 'status',
+				url : common.getBaseUrl() + 'status',
 				data : JSON.stringify(jsonData),
 				method : "POST",
 				success : function(count) {
