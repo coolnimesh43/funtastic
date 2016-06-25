@@ -84,6 +84,9 @@
 	<script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="assets/bower_components/Materialize/dist/js/materialize.js"></script>
 	<script type="text/javascript" src="assets/bower_components/handlebars/handlebars.js"></script>
+	<script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script type="text/javascript" src="assets/js/websocketFunctions.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.common.js"></script>
 	<script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
 	<script type="text/javascript" src="assets/js/smiley-slider.js"></script>

@@ -1,7 +1,11 @@
-var dashboard = {};
+var dashboard = dashboard || {};
 var smileSlider;
 var smilePosition = 0;
+var funtastic = funtastic || {};
+funtastic.admin = funtastic.admin || {};
+funtastic.admin.common = funtastic.admin.common || {};
 var $handlebarHelpers = $handlebarHelpers || {};
+var $websocketFunctions = $websocketFunctions || {};
 (function ( common ) {
     dashboard.init = function () {
         console.log("here... why isnt this being called");
@@ -19,7 +23,6 @@ var $handlebarHelpers = $handlebarHelpers || {};
     },
 
     dashboard.eventHandler = function () {
-        $websocketFunctions.init();
         $websocketFunctions.connect();
         
         $(document).on("click", "#create-group-btn", function () {
@@ -61,7 +64,7 @@ var $handlebarHelpers = $handlebarHelpers || {};
         
         $(document).on("click", "#meme-div li", function () {
             var src = $(this).find('img').prop('src');
-            $websocketFunctions.sendMessage();
+            $websocketFunctions.sendMessage(src);
         });
         
         $(document).on("click", "[name='add-user-group']", function () {
@@ -82,7 +85,6 @@ var $handlebarHelpers = $handlebarHelpers || {};
             common.apiCall(url, "DELETE", null, function ( response ) {
                 dashboard.renderExistingUserBlock();
             }, function ( error ) {
-                alert("error");
             });
         });
     }
