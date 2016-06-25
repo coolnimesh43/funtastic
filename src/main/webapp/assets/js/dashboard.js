@@ -9,7 +9,6 @@ var $handlebarHelpers = $handlebarHelpers || {};
         dashboard.renderUserInfoBlock();
         dashboard.renderActiveConversationBlock();
         dashboard.eventHandler();
-        dashboard.initialiseSmileySlider();
         $handlebarHelpers.registerCustomHandlebarHelpers();
         $('.modal-trigger').leanModal();
         dashboard.fetchGif("trending", "a");
