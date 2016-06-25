@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "status")
 public class Status extends AbstractEntity {
@@ -19,7 +21,7 @@ public class Status extends AbstractEntity {
 	@Column(name = "description")
 	private String description;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "mood")
 	private Mood mood;
 
@@ -30,8 +32,9 @@ public class Status extends AbstractEntity {
 	@Column(name = "state", nullable = false)
 	private Boolean state;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@OrderBy("updatedDate ASC")
+	@JsonBackReference
 	private List<Comment> comments;
 
 	public Status() {
