@@ -1,5 +1,6 @@
 package org.funtastic.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -44,10 +45,11 @@ public class User extends AbstractEntity {
 	@OneToOne
 	private Image profiePic;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "user_group", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "group_id") })
-	private List<Group> groups;
+	@ManyToMany(fetch = FetchType.EAGER, targetEntity = Group.class, cascade = { CascadeType.ALL })
+	@JoinTable(name = "user_group", joinColumns = {
+			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "group_id", referencedColumnName = "id") })
+	private List<Group> groups = new ArrayList<>();
 
 	public User() {
 		super();

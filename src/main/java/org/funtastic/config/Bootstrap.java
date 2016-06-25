@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.funtastic.entity.Group;
 import org.funtastic.entity.User;
+import org.funtastic.service.GroupService;
 import org.funtastic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -19,28 +21,34 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 	@Autowired
 	private UserService userService;
 
-	private List<User> getUsers() {
-		List<User> users = new ArrayList<>();
-		User user = null;
-		for (int i = 0; i < 10; i++) {
-			user = new User();
-			user.setFirstName("First Name" + i);
-			user.setLastName("Last Name" + i);
-			user.setEmail("coolnimesh43" + i + "@gmail.com");
-			user.setPassword("nimesh");
-			users.add(user);
-		}
-		return users;
+	@Autowired
+	private GroupService groupService;
+
+	private User getUsers() {
+		User user = new User();
+		user.setFirstName("First Name");
+		user.setLastName("Last Name");
+		user.setEmail("coolnimesh43@gmail.com");
+		user.setPassword("nimesh");
+		return user;
+	}
+
+	private Group getGroup() {
+		Group group = new Group("WhiteBeard Pirates");
+		return group;
 	}
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
 		LOG.debug("Bootstrap#creating user");
-		List<User> currentUser = this.userService.getAll();
-		if (currentUser == null || currentUser.isEmpty()) {
-			for (User user : getUsers()) {
-				User user1 = this.userService.save(user);
-			}
+		if (this.userService.getAll().isEmpty() && this.groupService.getAll().isEmpty()) {
+			List<Group> groups = new ArrayList<>();
+			User usr = getUsers();
+			Group g = getGroup();
+			groups.add(g);
+			usr.setGroups(groups);
+			usr = this.userService.save(usr);
+
 		}
 	}
 

@@ -3,7 +3,6 @@ package org.funtastic.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +16,7 @@ public class Group extends AbstractEntity {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "groups", cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "groups")
 	private List<User> groupUsers = new ArrayList<>();
 
 	public Group() {
