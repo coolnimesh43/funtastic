@@ -58,3 +58,11 @@
 	<img src="{{unescape url}}" alt="" class="circle"> </li>
 {{/each}}
 </script>
+
+
+<script id="_emojiResponse" type="text/x-handlebars-template">
+{{#each detail}}
+<li class="collection-item avatar">
+	<img src="{{this}}" alt="" class="circle"> </li>
+{{/each}}
+</script>

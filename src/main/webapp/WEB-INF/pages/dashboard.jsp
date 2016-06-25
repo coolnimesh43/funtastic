@@ -92,26 +92,18 @@
 	<script type="text/javascript" src="assets/js/chatFunctions.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
 
-	<!-- Modal Structure -->
-	<div id="modal1" class="modal">
-		<div class="modal-content">
-			<h4>Create Group</h4>
-			<form id="group-add">
-				<input type="text" name="name" required />
-			</form>
-		</div>
-		<div class="modal-footer">
-			<a href="#!" id="create-group" class=" modal-action waves-effect waves-green btn-flat">Ok</a>
-			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-		</div>
-	</div>
-	<div id="modal2" class="modal bottom-sheet">
+	<div id="modal1" class="modal bottom-sheet">
 		<div class="modal-content">
 			<ul id="gif-div" class="collection">
 			</ul>
 		</div>
 	</div>
-
+	<div id="modal2" class="modal bottom-sheet">
+		<div class="modal-content">
+			<ul id="gif-random" class="collection">
+			</ul>
+		</div>
+	</div>
 	<!-- Modal Structure -->
 	<div id="modal3" class="modal bottom-sheet">
 		<div class="modal-content">
@@ -121,7 +113,7 @@
 	</div>
 	<div id="modal4" class="modal bottom-sheet">
 		<div class="modal-content">
-			<ul id="gif-random" class="collection">
+			<ul id="emoji" class="collection">
 			</ul>
 		</div>
 	</div>
