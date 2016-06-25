@@ -74,3 +74,9 @@ header#conversation-title table {
 #conversationParticipants {
 	width: 100%;
 }
+#chatResponseBlock.col-md-8 {
+    width: 100%;
+}
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
+	padding: 5px 40px !important;
+}

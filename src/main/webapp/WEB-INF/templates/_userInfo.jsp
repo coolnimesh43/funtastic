@@ -1,21 +1,16 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script id="_userInfo" type="text/x-handlebars-template">
-	<img src="assets/images/user.jpg" class="demo-avatar">
+<c:choose>
+	<c:when test="${not empty user.profiePic and not empty user.profiePic.url}">
+		<img src="${user.profiePic.url}" class="demo-avatar">
+	</c:when>
+	<c:otherwise>
+		<img src="assets/images/user.jpg" class="demo-avatar">
+	</c:otherwise>
+</c:choose>
 <div class="demo-avatar-dropdown">
-	<span>${user.email}</span>
 	<span>${user.firstName} ${user.lastName}</span>
 	<div class="mdl-layout-spacer"></div>
-	<button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-		<i class="material-icons" role="presentation">arrow_drop_down</i>
-		<span class="visuallyhidden">Accounts</span>
-	</button>
-	<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-		<li class="mdl-menu__item">hello@example.com</li>
-		<li class="mdl-menu__item">info@example.com</li>
-		<li class="mdl-menu__item">
-			<i class="material-icons">add</i>
-			Add another account...
-		</li>
-	</ul>
 </div>
 
 </script>
