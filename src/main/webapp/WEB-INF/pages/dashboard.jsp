@@ -28,6 +28,7 @@
 <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
@@ -59,7 +60,7 @@
 				<header class="demo-drawer-header" id="header-user-info">
 					<!-- Add user info here  -->
 				</header>
-				<h3>User Group</h3>
+				<h4>User Group <a class="waves-effect waves-light btn modal-trigger random-button" href="/funtastic/manage"><i class="material-icons left">cloud</i>MANAGE</a></h4>				
 				<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800" id="active-conversations">
 					<!-- Active conversations here -->
 				</nav>

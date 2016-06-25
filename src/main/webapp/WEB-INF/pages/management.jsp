@@ -59,7 +59,7 @@
 				<header class="demo-drawer-header" id="header-user-info">
 					<!-- Add user info here  -->
 				</header>
-				<h3>User Group</h3>
+				<h4>User Group <a class="btn-floating btn-large waves-effect waves-light red" id="create-group-btn" href="javascript:void(0);"><i class="material-icons dp48"></i></a></h4>				<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800" id="active-conversations">
 				<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800" id="active-conversations">
 					<!-- Active conversations here -->
 				</nav>
