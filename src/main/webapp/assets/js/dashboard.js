@@ -13,15 +13,12 @@ var $websocketFunctions = $websocketFunctions || {};
         dashboard.renderUserInfoBlock();
         dashboard.renderActiveConversationBlock();
         dashboard.eventHandler();
-        dashboard.initialiseSmileySlider();
-        
         $handlebarHelpers.registerCustomHandlebarHelpers();
         $('.modal-trigger').leanModal();
         dashboard.fetchGif("trending", "a");
         dashboard.fetchRandomGif("random", "a");
         dashboard.fetchMeme();
     },
-
     dashboard.eventHandler = function () {
         $websocketFunctions.connect();
         
@@ -96,6 +93,8 @@ var $websocketFunctions = $websocketFunctions || {};
 
         };
         $handlebarHelpers.renderTemplate("#_conversationTitle", templateData, "#conversation-title");
+        // $(".mood-selector").
+        dashboard.initialiseSmileySlider();
     }, dashboard.renderActiveConversationBlock = function () {
         var templateData = {};
         $handlebarHelpers.renderTemplate("#_activeConversation", templateData, "#active-conversations");
@@ -170,7 +169,7 @@ var $websocketFunctions = $websocketFunctions || {};
         smileSlider = new SmileySlider(document.getElementById("slider"))
 
         smileSlider.position(0); // make it sad
-        smileSlider.position(1) // make it happy
+        smileSlider.position(1); // make it happy
         
         var p = smileSlider.position() // get it's position
         smileSlider.position(p / 2) // make it half as happy
@@ -196,6 +195,36 @@ var $websocketFunctions = $websocketFunctions || {};
             smilePosition = 0;
         }
         smileSlider.position(smilePosition);
+    }, dashboard.eventHandler = function () {
+        $(document).on("change", "select", function () {
+            console.log("hereeeeee");
+            var value = $(this).val();
+            var jsonData = {
+                description : '',
+                mood : {
+                    id : value
+                }
+            };
+            $.ajax({
+                url : commonFunctions.getBaseUrl() + 'status',
+                data : JSON.stringify(jsonData),
+                method : "POST",
+                success : function ( count ) {
+                    console.log("here");
+                    var position = 0;
+                    if (value == '6') {
+                        position = 0;
+                    } else if (value == '5') {
+                        position = 0.25;
+                    } else if (value == '4') {
+                        position = 1;
+                    } else {
+                        position = 0.5;
+                    }
+                    smileSlider.position(position);
+                }
+            });
+        });
     }
     dashboard.init();
 })(funtastic.admin.common);

@@ -13,9 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.funtastic.enums.CommentType;
+import org.funtastic.utility.TimeAgo;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -45,6 +47,13 @@ public class Comment extends AbstractEntity {
 	@OrderBy("createdDate ASC")
 	@JsonBackReference
 	List<CommentLike> commentLikes;
+
+	@Transient
+	String timeAgo;
+
+	public String getTimeAgo() {
+		return TimeAgo.toDuration(this.getCreatedDate().getTime());
+	}
 
 	public Comment() {
 		super();
