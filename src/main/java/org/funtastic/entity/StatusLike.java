@@ -7,15 +7,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="status_like")
+@Table(name = "status_like")
 public class StatusLike extends AbstractEntity {
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="status")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "status")
 	private Status status;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="liked_by")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "liked_by")
 	private User likedBy;
 
 	public StatusLike() {
@@ -48,6 +48,5 @@ public class StatusLike extends AbstractEntity {
 	public String toString() {
 		return "StatusLike [status=" + status + ", likedBy=" + likedBy + "]";
 	}
-	
-	
+
 }
