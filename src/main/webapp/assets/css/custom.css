@@ -7,47 +7,70 @@ body {
 	background-color: #209e91;
 }
 
-.collapse-expand{
-	float:right;
+.collapse-expand {
+	float: right;
 }
 
 .slide-properties {
-    height: 100%;
-    position: fixed;
-    right: 0;
-    transition:0.5s;
-    width: 30%;
+	height: 100%;
+	position: fixed;
+	right: 0;
+	transition: 0.5s;
+	width: 30%;
 }
 
 .close-btn {
-    display: inline-block;
-    padding: 10px;
+	display: inline-block;
+	padding: 10px;
 }
 
-.input-group a{
-    background: #26a69a none repeat scroll 0 0;
-    border: 1px solid;
-    color: #fff;
+.input-group a {
+	background: #26a69a none repeat scroll 0 0;
+	border: 1px solid;
+	color: #fff;
 }
 
-.chat-message,header#conversation-title, input {
+.chat-message, header#conversation-title, input {
 	color: black;
 }
 
-.demo-header.mdl-layout__header.mdl-color--grey-100.mdl-color-text--grey-600 {
-    margin-left: 240px;
+.demo-header.mdl-layout__header.mdl-color--grey-100.mdl-color-text--grey-600
+	{
+	margin-left: 240px;
 }
-header#conversation-title .mdl-layout__header-row{
+
+header#conversation-title, .demo-options, .demo-options #conversationParticipants,
+	main, main.demo-graphs, main.demo-graphs.demo-graphs.mdl-shadow--2dp.mdl-cell.mdl-cell--8-col #chatResponseBlock,
+	#chatResponseBlock .chat-message {
+	background: rgba(255, 255, 255, 0) !important;
+}
+
+#slider > div {
+	background: rgba(255,255,255,0) !important;
+}
+
+#conversationParticipants ul.friend-list li a {
+	color: #fff;
+}
+
+header#conversation-title .mdl-layout__header-row {
 	height: 35px;
 }
+
 header#conversation-title {
 	display: block;
-	margin-left : ;
+	margin-left:;
 	margin-right: ''
 }
-header#conversation-title table{
+
+header#conversation-title table {
 	float: left !important;
-} 
-#slider{
+}
+
+#slider {
 	margin: auto !important;
+}
+
+#conversationParticipants {
+	width: 100%;
 }

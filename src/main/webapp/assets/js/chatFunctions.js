@@ -50,7 +50,7 @@ var $websocketFunctions = $websocketFunctions || {};
         var templateData = {
 
         };
-        $handlebarHelpers.renderTemplate("#_chatUserListBlock", templateData, "#chatUserBlock");
+        $handlebarHelpers.renderTemplate("#_chatUserListBlock", templateData, "#conversationParticipants");
         $chatFunctions.renderResponseChatBlock();
     };
     
