@@ -10,9 +10,18 @@ var $handlebarHelpers = $handlebarHelpers || {};
         dashboard.renderActiveConversationBlock();
         dashboard.eventHandler();
         dashboard.initialiseSmileySlider();
+        
+        $handlebarHelpers.registerCustomHandlebarHelpers();
+        $('.modal-trigger').leanModal();
+        dashboard.fetchGif("trending", "a");
+        dashboard.fetchRandomGif("random", "a");
+        dashboard.fetchMeme();
     },
 
     dashboard.eventHandler = function () {
+        $websocketFunctions.init();
+        $websocketFunctions.connect();
+        
         $(document).on("click", "#create-group-btn", function () {
             $("#group-add")[0].reset();
             $('#modal1').openModal();
@@ -29,9 +38,30 @@ var $handlebarHelpers = $handlebarHelpers || {};
             });
         });
         
+        $(document).on('click', ".random-button", function () {
+            $('#modal1').openModal();
+        });
+        
+        $(document).on('click', ".trending-button", function () {
+            $('#modal2').openModal();
+        });
+        
+        $(document).on('click', ".meme-button", function () {
+            $('#modal3').openModal();
+        });
+        
+        $(document).on('click', ".emoji-button", function () {
+            $('#modal4').openModal();
+        });
+        
         $(document).on("click", "#active-conversations a", function () {
             var url = common.getBaseUrl() + "user";
             dashboard.renderUserBlock($(this).data("group-id"));
+        });
+        
+        $(document).on("click", "#meme-div li", function () {
+            var src = $(this).find('img').prop('src');
+            $websocketFunctions.sendMessage();
         });
         
         $(document).on("click", "[name='add-user-group']", function () {
@@ -69,7 +99,36 @@ var $handlebarHelpers = $handlebarHelpers || {};
         $handlebarHelpers.renderTemplate("#_activeConversation", templateData, "#active-conversations");
     },
 
-    dashboard.renderGroupBlock = function () {
+    dashboard.fetchGif = function ( type, term ) {
+        var url = common.getBaseUrl() + "comment/gif/" + type + "/" + term;
+        common.apiCall(url, "GET", null, function ( response ) {
+            var templateData = {
+                detail : response
+            };
+            $handlebarHelpers.renderTemplate("#_gifyResponse", templateData, "#gif-div");
+        }, function ( error ) {
+        });
+    }, dashboard.fetchRandomGif = function ( type, term ) {
+        var url = common.getBaseUrl() + "comment/gif/" + type + "/" + term;
+        common.apiCall(url, "GET", null, function ( response ) {
+            var templateData = {
+                detail : response
+            };
+            $handlebarHelpers.renderTemplate("#_gifyResponse", templateData, "#gif-random");
+        }, function ( error ) {
+        });
+    },
+
+    dashboard.fetchMeme = function () {
+        var url = common.getBaseUrl() + "comment/meme";
+        common.apiCall(url, "GET", null, function ( response ) {
+            var templateData = {
+                detail : response.data.memes
+            };
+            $handlebarHelpers.renderTemplate("#_memeResponse", templateData, "#meme-div");
+        }, function ( error ) {
+        });
+    }, dashboard.renderGroupBlock = function () {
         var url = common.getBaseUrl() + "group";
         common.apiCall(url, "GET", null, function ( response ) {
             var templateData = {

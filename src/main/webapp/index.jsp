@@ -45,7 +45,6 @@
 					</ul>
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/templates/_chat.jsp"%>
