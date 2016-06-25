@@ -9,24 +9,22 @@
 
 
 	<http use-expressions="true">
-		<access-denied-handler error-page="/dashboard" />
+		<access-denied-handler error-page="/login" />
 		<intercept-url pattern="/assets/**" access="permitAll" />
-		<form-login login-page='/login' default-target-url="/dashboard" authentication-failure-url="/login/fail" login-processing-url="/j_spring_security_check"
+		<intercept-url pattern="/signup" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<form-login login-page='/login' default-target-url="/dashboard" authentication-failure-url="/login" login-processing-url="/j_spring_security_check"
 			username-parameter="j_username" password-parameter="j_password" />
 		<logout logout-success-url="/login" invalidate-session="true" logout-url="/j_spring_security_logout" />
-<!-- 		<access-denied-handler ref="accessDeniedHandler" /> -->
+		<access-denied-handler ref="accessDeniedHandler" />
 		<csrf />
 		<headers>
 			<frame-options policy="SAMEORIGIN" />
 		</headers>
 	</http>
-<!-- 	<beans:bean id="accessDeniedHandler" class="com.lftechnology.amlf.app.config.CustomAccessDeniedHandler"></beans:bean> -->
+	<beans:bean id="accessDeniedHandler" class="org.funtastic.config.CustomAccessDeniedHandler"></beans:bean>
 
 <!-- 	<beans:bean id="customAuthenticationSuccessHandler" class="com.lftechnology.amlf.app.springsecurity.CustomAuthenticationSuccessHandler" /> -->
 
-	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-		<beans:constructor-arg name="strength" value="11" />
-	</beans:bean>
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="customUserLoginServiceImpl">

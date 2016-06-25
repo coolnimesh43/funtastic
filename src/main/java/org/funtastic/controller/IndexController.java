@@ -26,9 +26,10 @@ public class IndexController {
 		User loggedInUser = this.userAuthService.getLoggedInUser();
 		if (loggedInUser == null) {
 			mv.setViewName("loginSignup");
+		} else {
+			mv.setViewName("dashboard");
+			mv.addObject("user", loggedInUser);
 		}
-		mv.setViewName("dashboard");
-		mv.addObject("user", loggedInUser);
 		return mv;
 	}
 }

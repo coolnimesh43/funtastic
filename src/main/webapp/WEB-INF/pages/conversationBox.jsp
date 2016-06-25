@@ -19,8 +19,7 @@
 		</div>
         
         <!-- selected chat -->
-    	<div class="col-md-8" id="chatResponseBlock">
-		</div>        
+    	        
 	</div>
 </div>
 <script type="text/javascript" src="assets/bower_components/jquery/dist/jquery.min.js"></script>

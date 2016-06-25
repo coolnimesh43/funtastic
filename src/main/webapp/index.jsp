@@ -40,7 +40,6 @@
 			</ul>
 		</div>
 	</div>
-
 	<div id="modal1" class="modal bottom-sheet"">
 		<div class="modal-content">
 			<ul id="meme-div" class="collection">

@@ -4,49 +4,64 @@ funtastic.admin.common = funtastic.admin.common || {};
 funtastic.admin.chatFunctions = funtastic.admin.chatFunctions || {};
 var $handlebarHelpers = $handlebarHelpers || {};
 var $websocketFunctions = $websocketFunctions || {};
-(function(common, $chatFunctions, $chatOptions) {
-	"use strict";
-	$chatFunctions.init = function() {
-		$(document).ready(function() {
-			$chatFunctions.renderUserChatList();
-			$chatFunctions.eventHandler();
-			$chatOptions.fetchGif("trending", "something");
-		});
-	};
+(function ( common, $chatFunctions ) {
+    "use strict";
+    $chatFunctions.init = function () {
+        $(document).ready(function () {
+            $chatFunctions.renderUserChatList();
+            $chatFunctions.eventHandler();
+        });
+    };
+    
+    $chatFunctions.eventHandler = function () {
+        
+        $websocketFunctions.init();
+        $websocketFunctions.connect();
+        
+        $(document).on('click', '.send-button', function () {
+            console.log('sendbutton clicked');
+            $websocketFunctions.sendMessage();
+        });
+        
+        $(document).on('click', '.collapse-expand', function ( e ) {
+            e.preventDefault();
+            $chatFunctions.renderChatOptionBlock();
+        });
+        
+        $(document).on('click', '.close-btn', function ( e ) {
+            e.preventDefault();
+            $('.slide-block').addClass('hide');
+            $('.close-btn').addClass('hide');
+        });
+    };
+    
+    /* user chat option block render */
+    $chatFunctions.renderChatOptionBlock = function () {
+        var templateData = {
 
-	$chatFunctions.eventHandler = function() {
+        };
+        $handlebarHelpers.renderTemplate("#_chatOptionsBlock", templateData, "#chatOptionsBlock");
+        $('.slide-block').removeClass('hide');
+        $('.close-btn').removeClass('hide');
+    };
+    
+    /* user chat list block render */
+    $chatFunctions.renderUserChatList = function () {
+        var templateData = {
 
-		$websocketFunctions.init();
+        };
+        $handlebarHelpers.renderTemplate("#_chatUserListBlock", templateData, "#chatUserBlock");
+        $chatFunctions.renderResponseChatBlock();
+    };
+    
+    /* user response chat block render */
+    $chatFunctions.renderResponseChatBlock = function () {
+        var templateData = {
 
-		$(document).on("click", ".no-rounded", function() {
-			console.log('clicked');
-			$websocketFunctions.messageSend();
-		});
-
-	};
-
-	/* user chat list block render */
-	$chatFunctions.renderUserChatList = function() {
-		console.log("renderUserChatList");
-		var templateData = {
-
-		};
-		$handlebarHelpers.renderTemplate("#_chatUserListBlock", templateData,
-				"#chatUserBlock");
-		$chatFunctions.renderResponseChatBlock();
-	};
-
-	/* user response chat block render */
-	$chatFunctions.renderResponseChatBlock = function() {
-		console.log("renderResponseChatBlock");
-		var templateData = {
-
-		};
-		$handlebarHelpers.renderTemplate("#_chatResponseBlock", templateData,
-				"#chatResponseBlock");
-	};
-
-	$chatFunctions.init();
-
-})(funtastic.admin.common, funtastic.admin.chatFunctions,
-		funtastic.admin.commentOption);
+        };
+        $handlebarHelpers.renderTemplate("#_chatResponseBlock", templateData, "#chatResponseBlock");
+    };
+    
+    $chatFunctions.init();
+    
+})(funtastic.admin.common, funtastic.admin.chatFunctions);
