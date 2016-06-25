@@ -45,8 +45,8 @@ header#conversation-title, .demo-options, .demo-options #conversationParticipant
 	background: rgba(255, 255, 255, 0) !important;
 }
 
-#slider > div {
-	background: rgba(255,255,255,0) !important;
+#slider>div {
+	background: rgba(255, 255, 255, 0) !important;
 }
 
 #conversationParticipants ul.friend-list li a {
@@ -59,8 +59,9 @@ header#conversation-title .mdl-layout__header-row {
 
 header#conversation-title {
 	display: block;
-	margin-left:;
-	margin-right: ''
+	margin-left: '';
+	margin-right: '';
+	position: relative;
 }
 
 header#conversation-title table {
@@ -75,18 +76,27 @@ header#conversation-title table {
 	width: 100%;
 }
 
+.input-field.col {
+	background: rgba(255, 255, 255, 0) none repeat scroll 0 0;
+	float: right;
+	position: absolute;
+	right: 251px;
+	top: 10px;
+	width: 20%;
+}
+
 li.collection-item.avatar {
-    display: inline-block;
-    margin: 10px 5px;
-    cursor: pointer;
-    padding: 10px 5px;
-    /* width:74px; */
+	display: inline-block;
+	margin: 10px 5px;
+	cursor: pointer;
+	padding: 10px 5px;
+	/* width:74px; */
 }
 
 #chatResponseBlock.col-md-8 {
-    width: 100%;
+	    width: 100%;
 }
 
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
 	padding: 5px 40px !important;
 }
