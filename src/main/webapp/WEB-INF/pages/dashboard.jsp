@@ -97,29 +97,6 @@
 			</main>
 		</div>
 	</div>
-	<%@ include file="/WEB-INF/templates/_chat.jsp"%>
-	<%@ include file="/WEB-INF/templates/_conversationTitle.jsp"%>
-	<%@ include file="/WEB-INF/templates/_userInfo.jsp"%>
-	<%@ include file="/WEB-INF/templates/_activeConversation.jsp"%>
-	<script type="text/javascript"
-		src="assets/bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-	<script type="text/javascript"
-		src="assets/bower_components/Materialize/dist/js/materialize.js"></script>
-	<script type="text/javascript"
-		src="assets/bower_components/handlebars/handlebars.js"></script>
-	<script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-	<script type="text/javascript" src="assets/js/websocketFunctions.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.common.js"></script>
-	<script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
-	<script type="text/javascript" src="assets/js/smiley-slider.js"></script>
-	<script type="text/javascript" src="assets/js/dashboard.js"></script>
-	<script type="text/javascript" src="assets/js/chatFunctions.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
-
 	<div id="modal1" class="modal bottom-sheet">
 		<div class="modal-content">
 			<ul id="gif-div" class="collection">
@@ -145,6 +122,28 @@
 			</ul>
 		</div>
 	</div>
+	<%@ include file="/WEB-INF/templates/_chat.jsp"%>
+	<%@ include file="/WEB-INF/templates/_conversationTitle.jsp"%>
+	<%@ include file="/WEB-INF/templates/_userInfo.jsp"%>
+	<%@ include file="/WEB-INF/templates/_activeConversation.jsp"%>
+	<script type="text/javascript"
+		src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript"
+		src="assets/bower_components/Materialize/dist/js/materialize.js"></script>
+	<script type="text/javascript"
+		src="assets/bower_components/handlebars/handlebars.js"></script>
+	<script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script type="text/javascript" src="assets/js/websocketFunctions.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.common.js"></script>
+	<script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
+	<script type="text/javascript" src="assets/js/smiley-slider.js"></script>
+	<script type="text/javascript" src="assets/js/dashboard.js"></script>
+	<script type="text/javascript" src="assets/js/chatFunctions.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
 	<script type="text/javascript">
 		$('.modal-trigger').leanModal();
 	</script>

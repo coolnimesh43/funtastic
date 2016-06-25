@@ -60,7 +60,10 @@ var $websocketFunctions = $websocketFunctions || {};
 		dashboard.fetchEmoji();
 	}, dashboard.eventHandler = function() {
 		$websocketFunctions.connect();
-
+		$(document).on("click", ".collection-item", function() {
+			var src = $(this).find('img').prop('src');
+			$websocketFunctions.sendMessage(src);
+		});
 		$(document).on("click", "#create-group-btn", function() {
 			$("#group-add")[0].reset();
 			$('#modal1').openModal();
@@ -102,11 +105,6 @@ var $websocketFunctions = $websocketFunctions || {};
 			dashboard.renderUserBlock($(this).data("group-id"));
 		});
 
-		$(document).on("click", "#meme-div li", function() {
-			var src = $(this).find('img').prop('src');
-			$websocketFunctions.sendMessage(src);
-		});
-
 		$(document).on("click", "[name='add-user-group']", function() {
 			var url = common.getBaseUrl() + "group/user";
 			var data = {
@@ -116,7 +114,6 @@ var $websocketFunctions = $websocketFunctions || {};
 			common.apiCall(url, "POST", data, function(response) {
 				dashboard.renderGroupBlock();
 			}, function(error) {
-				alert("error");
 			});
 		});
 
@@ -131,8 +128,7 @@ var $websocketFunctions = $websocketFunctions || {};
 					}, function(error) {
 					});
 				});
-	},
-	dashboard.renderUserInfoBlock = function() {
+	}, dashboard.renderUserInfoBlock = function() {
 		var templateData = {};
 		$handlebarHelpers.renderTemplate("#_userInfo", templateData,
 				"#header-user-info");
@@ -154,23 +150,24 @@ var $websocketFunctions = $websocketFunctions || {};
 		var url = common.getBaseUrl() + "comment/gif/" + type + "/" + term;
 		common.apiCall(url, "GET", null, function(response) {
 			var templateData = {
-				detail : response
+				detail : response.data
 			};
 			$handlebarHelpers.renderTemplate("#_gifyResponse", templateData,
 					"#gif-div");
 		}, function(error) {
 		});
 	}, dashboard.fetchEmoji = function() {
-		var templateData = {
-				detail : emojiData
-			};
-		$handlebarHelpers
-				.renderTemplate("#_emojiResponse", templateData, "#emoji");
+		var htmldata = "";
+		$.each(emojiData, function(i, v) {
+			htmldata += "<li class='collection-item avatar'><img src=" + v
+					+ " class='circle'></li>";
+		});
+		$("#emoji").html(htmldata);
 	}, dashboard.fetchRandomGif = function(type, term) {
 		var url = common.getBaseUrl() + "comment/gif/" + type + "/" + term;
 		common.apiCall(url, "GET", null, function(response) {
 			var templateData = {
-				detail : response
+				detail : response.data
 			};
 			$handlebarHelpers.renderTemplate("#_gifyResponse", templateData,
 					"#gif-random");
@@ -233,10 +230,8 @@ var $websocketFunctions = $websocketFunctions || {};
 
 		smileSlider.position(0); // make it sad
 		smileSlider.position(1); // make it happy
-
 		var p = smileSlider.position() // get it's position
 		smileSlider.position(p / 2) // make it half as happy
-
 		smileSlider.position(function(p) {
 			// do something when it changes
 		});
