@@ -45,7 +45,9 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 			List<Group> groups = new ArrayList<>();
 			User usr = getUsers();
 			Group g = getGroup();
+			Group g1 = new Group("Black Beard Pirates");
 			groups.add(g);
+			groups.add(g1);
 			usr.setGroups(groups);
 			usr = this.userService.save(usr);
 

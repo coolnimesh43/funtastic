@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -80,5 +82,16 @@ public abstract class AbstractEntity implements Serializable {
 
 	public void setUpdatedBy(Long updatedBy) {
 		this.updatedBy = updatedBy;
+	}
+
+	@PrePersist
+	public void setDate() {
+		this.createdDate = new Date();
+		this.updatedDate = new Date();
+	}
+
+	@PreUpdate
+	public void setUpdatedDate() {
+		this.updatedDate = new Date();
 	}
 }
