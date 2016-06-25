@@ -50,13 +50,13 @@ public class CommentOptionController {
 	@Value("${giphy.api.endpoint}")
 	private static String GIPHY_REST_ENDPOINT = "http://api.giphy.com/v1/";
 
-	@RequestMapping(value = "/meme", method = RequestMethod.GET,produces = "application/json")
+	@RequestMapping(value = "/meme", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<?> getMeme() throws NotValidException {
 		return new ResponseEntity<>(ImgFlipUtils.getMeme(IMG_FLIP_REST_ENDPOINT + "get_memes"), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/gif/{type}/{searchTerm}", method = RequestMethod.GET,produces = "application/json")
+	@RequestMapping(value = "/gif/{type}/{searchTerm}", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<?> get(@PathVariable("type") String type, @PathVariable("searchTerm") String term)
 			throws NotValidException {
@@ -68,6 +68,8 @@ public class CommentOptionController {
 		LOG.debug("CommentOptionController#get");
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
+			comment.setCreatedBy(user.getId());
+			comment.setUpdatedBy(user.getId());
 			Comment saved = this.commentService.save(comment);
 			if (saved != null) {
 				return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.TRUE, ""), HttpStatus.OK);

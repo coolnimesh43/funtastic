@@ -58,6 +58,8 @@ public class StatusController {
 		ModelAndView mv = new ModelAndView();
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
+			status.setCreatedBy(user.getId());
+			status.setUpdatedBy(user.getId());
 			Status saved = this.statusService.save(status);
 			if (saved != null) {
 				return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.TRUE, ""), HttpStatus.OK);
