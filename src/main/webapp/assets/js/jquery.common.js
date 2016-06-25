@@ -89,9 +89,7 @@ funtastic.admin = funtastic.admin || {};
 				function(response) {
 					if (typeof successCallBack !== "undefined"
 							&& successCallBack !== null) {
-						var data = perpetulist.cyclicJsonHandler
-								.processJson(response);
-						successCallBack(data);
+						successCallBack(response);
 					}
 
 				}).fail(function(error) {

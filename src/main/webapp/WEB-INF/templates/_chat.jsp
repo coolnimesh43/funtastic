@@ -194,15 +194,125 @@
                     			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. 
                     		</p>
                     	</div>
-                    </li>                    
+                    </li>  
+					<div class="arbitary-div hide"></div>                  
                 </ul>
             </div>
-            <div class="chat-box bg-white">
+            <div class="chat-box bg-white"> 
             	<div class="input-group">
-            		<input class="form-control border no-shadow no-rounded" placeholder="Type your message here">
-            		<span class="input-group-btn">
-            			<button class="btn btn-success no-rounded" type="button">Send</button>
-            		</span>
+					<a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+					<a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+					<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+					<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
             	</div><!-- /input-group -->	
-            </div>  
+            </div>
+</script>
+<script id="_chatOptionsBlock" type="text/x-handlebars-template">
+	<a class="close-btn" href="javascript:void(0);">X</a>
+        <!-- member list -->
+        <ul class="friend-list">
+            <li class="active bounceInDown selected">
+            	<a href="#" class="clearfix">
+            		<img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+            		<div class="friend-name">	
+            			<strong>John Doe</strong>
+            		</div>
+            		<div class="last-message text-muted">Hello, Are you there?</div>
+            		<small class="time text-muted">Just now</small>
+            		<small class="chat-alert label label-danger">1</small>
+            	</a>
+            </li>
+            <li>
+            	<a href="#" class="clearfix">
+            		<img src="http://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+            		<div class="friend-name">	
+            			<strong>Jane Doe</strong>
+            		</div>
+            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+            		<small class="time text-muted">5 mins ago</small>
+            	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+            	</a>
+            </li> 
+            <li>
+            	<a href="#" class="clearfix">
+            		<img src="http://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+            		<div class="friend-name">	
+            			<strong>Kate</strong>
+            		</div>
+            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+            		<small class="time text-muted">Yesterday</small>
+            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+            	</a>
+            </li>  
+            <li>
+            	<a href="#" class="clearfix">
+            		<img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+            		<div class="friend-name">	
+            			<strong>Kate</strong>
+            		</div>
+            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+            		<small class="time text-muted">Yesterday</small>
+            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+            	</a>
+            </li>     
+            <li>
+            	<a href="#" class="clearfix">
+            		<img src="http://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+            		<div class="friend-name">	
+            			<strong>Kate</strong>
+            		</div>
+            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+            		<small class="time text-muted">Yesterday</small>
+            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+            	</a>
+            </li>        
+            <li>
+            	<a href="#" class="clearfix">
+            		<img src="http://bootdey.com/img/Content/user_6.jpg" alt="" class="img-circle">
+            		<div class="friend-name">	
+            			<strong>Kate</strong>
+            		</div>
+            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+            		<small class="time text-muted">Yesterday</small>
+            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+            	</a>
+            </li>          
+            <li>
+            	<a href="#" class="clearfix">
+            		<img src="http://bootdey.com/img/Content/user_5.jpg" alt="" class="img-circle">
+            		<div class="friend-name">	
+            			<strong>Kate</strong>
+            		</div>
+            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+            		<small class="time text-muted">Yesterday</small>
+            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+            	</a>
+            </li>
+            <li>
+                <a href="#" class="clearfix">
+            		<img src="http://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+            		<div class="friend-name">	
+            			<strong>Jane Doe</strong>
+            		</div>
+            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+            		<small class="time text-muted">5 mins ago</small>
+            	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+            	</a>
+            </li>                 
+        </ul>
+</script>
+
+<script id="_gifyResponse" type="text/x-handlebars-template">
+{{#each detail}}
+<li class="collection-item avatar">
+	<img src="{{images.original.url}}" alt="" class="circle"> </li>
+{{/each}}
+</script>
+
+
+<script id="_memeResponse" type="text/x-handlebars-template">
+{{#each detail}}
+<li class="collection-item avatar">
+	<img src="{{unescape url}}" alt="" class="circle"> </li>
+{{/each}}
 </script>

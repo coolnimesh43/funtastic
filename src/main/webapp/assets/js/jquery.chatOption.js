@@ -4,7 +4,8 @@ funtastic.admin.commentOption = funtastic.admin.commentOption || {};
 (function($commentOption, commonFunctions) {
 	"use strict";
 	$commentOption.init = function() {
-		$commentOption.fetchGif("search", "a");
+		$handlebarHelpers.registerCustomHandlebarHelpers();
+		$commentOption.fetchGif("trending", "a");
 		$commentOption.fetchMeme();
 	};
 
@@ -12,7 +13,11 @@ funtastic.admin.commentOption = funtastic.admin.commentOption || {};
 		var url = commonFunctions.getBaseUrl() + "comment/gif/" + type + "/"
 				+ term;
 		commonFunctions.apiCall(url, "GET", null, function(response) {
-			var jsonData = JSON.parse(response);
+			var templateData = {
+				detail : response
+			};
+			$handlebarHelpers.renderTemplate("#_gifyResponse", templateData,
+					"#gif-div");
 		}, function(error) {
 		});
 	}
@@ -20,7 +25,11 @@ funtastic.admin.commentOption = funtastic.admin.commentOption || {};
 	$commentOption.fetchMeme = function() {
 		var url = commonFunctions.getBaseUrl() + "comment/meme";
 		commonFunctions.apiCall(url, "GET", null, function(response) {
-			var jsonData = JSON.parse(response);
+			var templateData = {
+				detail : response.data.memes
+			};
+			$handlebarHelpers.renderTemplate("#_memeResponse", templateData,
+					"#meme-div");
 		}, function(error) {
 		});
 	}

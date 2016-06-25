@@ -16,17 +16,37 @@ var $websocketFunctions = $websocketFunctions || {};
     $chatFunctions.eventHandler = function () {
         
         $websocketFunctions.init();
+        $websocketFunctions.connect();
         
-        $(document).on("click", ".no-rounded", function () {
-            console.log('clicked');
-            $websocketFunctions.messageSend();
+        $(document).on('click', '.send-button', function () {
+            console.log('sendbutton clicked');
+            $websocketFunctions.sendMessage();
         });
         
+        $(document).on('click', '.collapse-expand', function ( e ) {
+            e.preventDefault();
+            $chatFunctions.renderChatOptionBlock();
+        });
+        
+        $(document).on('click', '.close-btn', function ( e ) {
+            e.preventDefault();
+            $('.slide-block').addClass('hide');
+            $('.close-btn').addClass('hide');
+        });
+    };
+    
+    /* user chat option block render */
+    $chatFunctions.renderChatOptionBlock = function () {
+        var templateData = {
+
+        };
+        $handlebarHelpers.renderTemplate("#_chatOptionsBlock", templateData, "#chatOptionsBlock");
+        $('.slide-block').removeClass('hide');
+        $('.close-btn').removeClass('hide');
     };
     
     /* user chat list block render */
     $chatFunctions.renderUserChatList = function () {
-        console.log("renderUserChatList");
         var templateData = {
 
         };
@@ -36,7 +56,6 @@ var $websocketFunctions = $websocketFunctions || {};
     
     /* user response chat block render */
     $chatFunctions.renderResponseChatBlock = function () {
-        console.log("renderResponseChatBlock");
         var templateData = {
 
         };
