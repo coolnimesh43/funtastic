@@ -57,6 +57,7 @@ var $websocketFunctions = $websocketFunctions || {};
 
         };
         $handlebarHelpers.renderTemplate("#_chatResponseBlock", templateData, "#chatResponseBlock");
+		$('.modal-trigger').leanModal();
     };
     
     $chatFunctions.init();

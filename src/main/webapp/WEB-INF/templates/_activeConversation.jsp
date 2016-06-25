@@ -47,7 +47,7 @@
 <script id="_gifyResponse" type="text/x-handlebars-template">
 {{#each detail}}
 <li class="collection-item avatar">
-	<img src="{{images.original.url}}" alt="" class="circle"> </li>
+	<img src="{{unescape images.original.url}}" alt="" class="circle"> </li>
 {{/each}}
 </script>
 

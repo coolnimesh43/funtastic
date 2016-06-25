@@ -4,7 +4,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+<meta name="description"
+	content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard</title>
 
@@ -19,7 +20,8 @@
 <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
 
 <!-- Tile icon for Win8 (144x144 + tile color) -->
-<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+<meta name="msapplication-TileImage"
+	content="images/touch/ms-touch-icon-144x144-precomposed.png">
 <meta name="msapplication-TileColor" content="#3372DF">
 
 <link rel="shortcut icon" href="assets/images/favicon.png">
@@ -28,13 +30,21 @@
 <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="assets/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="assets/bower_components/Materialize/dist/css/materialize.min.css" media="screen,projection" />
+<link
+	href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="assets/bower_components/font-awesome/css/font-awesome.css"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link type="text/css" rel="stylesheet"
+	href="assets/bower_components/Materialize/dist/css/materialize.min.css"
+	media="screen,projection" />
 <link href="assets/css/material.min.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/styles.css" rel="stylesheet">
@@ -53,15 +63,24 @@
 </head>
 <body>
 	<div class="mdl-layout__container">
-		<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-			<header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600" id="conversation-title"> </header>
+		<div
+			class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+			<header
+				class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600"
+				id="conversation-title"> </header>
 			<!-- Add the conversation title here -->
-			<div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+			<div
+				class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
 				<header class="demo-drawer-header" id="header-user-info">
 					<!-- Add user info here  -->
 				</header>
-				<h4>User Group <a class="waves-effect waves-light btn modal-trigger random-button" href="/funtastic/manage"><i class="material-icons left">cloud</i>MANAGE</a></h4>				
-				<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800" id="active-conversations">
+				<h4>
+					User Group <a
+						class="waves-effect waves-light btn modal-trigger random-button"
+						href="/funtastic/manage"><i class="material-icons left">cloud</i>MANAGE</a>
+				</h4>
+				<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800"
+					id="active-conversations">
 					<!-- Active conversations here -->
 				</nav>
 			</div>
@@ -70,7 +89,8 @@
 				<div class="demo-graphs mdl-shadow--2dp mdl-cell mdl-cell--8-col">
 					<div class="col-md-8" id="chatResponseBlock"></div>
 				</div>
-				<div class="demo-options mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--4-col-desktop">
+				<div
+					class="demo-options mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--4-col-desktop">
 					<div class="col-md-8" id="conversationParticipants"></div>
 				</div>
 			</div>
@@ -81,12 +101,17 @@
 	<%@ include file="/WEB-INF/templates/_conversationTitle.jsp"%>
 	<%@ include file="/WEB-INF/templates/_userInfo.jsp"%>
 	<%@ include file="/WEB-INF/templates/_activeConversation.jsp"%>
-	<script type="text/javascript" src="assets/bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-	<script type="text/javascript" src="assets/bower_components/Materialize/dist/js/materialize.js"></script>
-	<script type="text/javascript" src="assets/bower_components/handlebars/handlebars.js"></script>
+	<script type="text/javascript"
+		src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript"
+		src="assets/bower_components/Materialize/dist/js/materialize.js"></script>
+	<script type="text/javascript"
+		src="assets/bower_components/handlebars/handlebars.js"></script>
 	<script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 	<script type="text/javascript" src="assets/js/websocketFunctions.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.common.js"></script>
 	<script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
@@ -120,5 +145,8 @@
 			</ul>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$('.modal-trigger').leanModal();
+	</script>
 </body>
 </html>

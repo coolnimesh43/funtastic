@@ -7,7 +7,6 @@ funtastic.admin.common = funtastic.admin.common || {};
 var $handlebarHelpers = $handlebarHelpers || {};
 var $websocketFunctions = $websocketFunctions || {};
 (function(common) {
-
 	var emojiData = [
 			"http://pix.iemoji.com/images/emoji/apple/ios-9/256/smiling-face-with-smiling-eyes.png",
 			"http://pix.iemoji.com/images/emoji/apple/ios-9/256/white-smiling-face.png",
@@ -55,10 +54,10 @@ var $websocketFunctions = $websocketFunctions || {};
 		dashboard.renderActiveConversationBlock();
 		dashboard.eventHandler();
 		$handlebarHelpers.registerCustomHandlebarHelpers();
-		$('.modal-trigger').leanModal();
 		dashboard.fetchGif("trending", "a");
 		dashboard.fetchRandomGif("random", "a");
 		dashboard.fetchMeme();
+		dashboard.fetchEmoji();
 	}, dashboard.eventHandler = function() {
 		$websocketFunctions.connect();
 
@@ -79,18 +78,22 @@ var $websocketFunctions = $websocketFunctions || {};
 		});
 
 		$(document).on('click', ".random-button", function() {
+			$('.modal-trigger').leanModal();
 			$('#modal1').openModal();
 		});
 
 		$(document).on('click', ".trending-button", function() {
+			$('.modal-trigger').leanModal();
 			$('#modal2').openModal();
 		});
 
 		$(document).on('click', ".meme-button", function() {
+			$('.modal-trigger').leanModal();
 			$('#modal3').openModal();
 		});
 
 		$(document).on('click', ".emoji-button", function() {
+			$('.modal-trigger').leanModal();
 			$('#modal4').openModal();
 		});
 
@@ -128,7 +131,7 @@ var $websocketFunctions = $websocketFunctions || {};
 					}, function(error) {
 					});
 				});
-	}
+	},
 	dashboard.renderUserInfoBlock = function() {
 		var templateData = {};
 		$handlebarHelpers.renderTemplate("#_userInfo", templateData,
@@ -158,8 +161,11 @@ var $websocketFunctions = $websocketFunctions || {};
 		}, function(error) {
 		});
 	}, dashboard.fetchEmoji = function() {
+		var templateData = {
+				detail : emojiData
+			};
 		$handlebarHelpers
-				.renderTemplate("#_emojiResponse", emojiData, "#emoji");
+				.renderTemplate("#_emojiResponse", templateData, "#emoji");
 	}, dashboard.fetchRandomGif = function(type, term) {
 		var url = common.getBaseUrl() + "comment/gif/" + type + "/" + term;
 		common.apiCall(url, "GET", null, function(response) {
