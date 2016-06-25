@@ -45,7 +45,7 @@ public class User extends AbstractEntity {
 	@Column(name = "gender")
 	private Gender genderType;
 
-	@OneToOne
+	@OneToOne(cascade = { CascadeType.PERSIST })
 	private Image profiePic;
 
 	@ManyToMany(fetch = FetchType.EAGER, targetEntity = Group.class, cascade = { CascadeType.ALL })
