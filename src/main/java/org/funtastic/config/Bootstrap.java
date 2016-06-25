@@ -69,7 +69,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
-		LOG.debug("Bootstrap#creating user");
+		/*LOG.debug("Bootstrap#creating user");
 		if (this.userService.getAll().isEmpty() && this.groupService.getAll().isEmpty()) {
 			getUsers();
 			List<Group> groups = new ArrayList<>();
@@ -96,7 +96,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 			for (Mood m : getMoods()) {
 				this.moodService.save(m);
 			}
-		}
+		}*/
 	}
 
 }

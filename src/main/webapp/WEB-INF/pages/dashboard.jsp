@@ -28,6 +28,7 @@
 <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
@@ -59,7 +60,7 @@
 				<header class="demo-drawer-header" id="header-user-info">
 					<!-- Add user info here  -->
 				</header>
-				<h3>User Group</h3>
+				<h4>User Group <a class="waves-effect waves-light btn modal-trigger random-button" href="/funtastic/manage"><i class="material-icons left">cloud</i>MANAGE</a></h4>				
 				<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800" id="active-conversations">
 					<!-- Active conversations here -->
 				</nav>
@@ -84,6 +85,9 @@
 	<script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="assets/bower_components/Materialize/dist/js/materialize.js"></script>
 	<script type="text/javascript" src="assets/bower_components/handlebars/handlebars.js"></script>
+	<script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script type="text/javascript" src="assets/js/websocketFunctions.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.common.js"></script>
 	<script type="text/javascript" src="assets/js/handlebarHelper.js"></script>
 	<script type="text/javascript" src="assets/js/smiley-slider.js"></script>
@@ -91,26 +95,18 @@
 	<script type="text/javascript" src="assets/js/chatFunctions.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
 
-	<!-- Modal Structure -->
-	<div id="modal1" class="modal">
-		<div class="modal-content">
-			<h4>Create Group</h4>
-			<form id="group-add">
-				<input type="text" name="name" required />
-			</form>
-		</div>
-		<div class="modal-footer">
-			<a href="#!" id="create-group" class=" modal-action waves-effect waves-green btn-flat">Ok</a>
-			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-		</div>
-	</div>
-	<div id="modal2" class="modal bottom-sheet">
+	<div id="modal1" class="modal bottom-sheet">
 		<div class="modal-content">
 			<ul id="gif-div" class="collection">
 			</ul>
 		</div>
 	</div>
-
+	<div id="modal2" class="modal bottom-sheet">
+		<div class="modal-content">
+			<ul id="gif-random" class="collection">
+			</ul>
+		</div>
+	</div>
 	<!-- Modal Structure -->
 	<div id="modal3" class="modal bottom-sheet">
 		<div class="modal-content">
@@ -120,7 +116,7 @@
 	</div>
 	<div id="modal4" class="modal bottom-sheet">
 		<div class="modal-content">
-			<ul id="gif-random" class="collection">
+			<ul id="emoji" class="collection">
 			</ul>
 		</div>
 	</div>

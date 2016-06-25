@@ -1,7 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script id="_activeConversation" type="text/x-handlebars-template">
-
-  <a class="btn-floating btn-large waves-effect waves-light red" id="create-group-btn" href="javascript:void(0);"><i class="material-icons"></i></a>
 <c:forEach var="group" items="${groups}">
 	<a class="mdl-navigation__link" href="#" data-group-id="${group.id}">
 		${group.name}
@@ -58,5 +56,13 @@
 {{#each detail}}
 <li class="collection-item avatar">
 	<img src="{{unescape url}}" alt="" class="circle"> </li>
+{{/each}}
+</script>
+
+
+<script id="_emojiResponse" type="text/x-handlebars-template">
+{{#each detail}}
+<li class="collection-item avatar">
+	<img src="{{this}}" alt="" class="circle"> </li>
 {{/each}}
 </script>
