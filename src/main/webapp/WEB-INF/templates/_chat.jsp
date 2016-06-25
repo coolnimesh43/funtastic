@@ -187,94 +187,20 @@
 	<a class="close-btn" href="javascript:void(0);">X</a>
         <!-- member list -->
         <ul class="friend-list">
+			{{#each conversation}}
             <li class="active bounceInDown selected">
             	<a href="#" class="clearfix">
-            		<img src="assets/images/user_1.jpg" alt="" class="img-circle">
+            		<img src="{{commentBy.profilePicture profiePic.url}}" alt="" class="img-circle">
             		<div class="friend-name">	
-            			<strong>John Doe</strong>
+            			<strong>{{commentBy.firstName}} {{commentBy.secondName}}</strong>
             		</div>
-            		<div class="last-message text-muted">Hello, Are you there?</div>
-            		<small class="time text-muted">Just now</small>
+            		<div class="last-message text-muted"><img src="{{description}}"></img></div>
+            		<small class="time text-muted">{{timeAgo}}</small>
             		<small class="chat-alert label label-danger">1</small>
             	</a>
             </li>
-            <li>
-            	<a href="#" class="clearfix">
-            		<img src="assets/images/user_2.jpg" alt="" class="img-circle">
-            		<div class="friend-name">	
-            			<strong>Jane Doe</strong>
-            		</div>
-            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-            		<small class="time text-muted">5 mins ago</small>
-            	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-            	</a>
-            </li> 
-            <li>
-            	<a href="#" class="clearfix">
-            		<img src="assets/images/user_3.jpg" alt="" class="img-circle">
-            		<div class="friend-name">	
-            			<strong>Kate</strong>
-            		</div>
-            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-            		<small class="time text-muted">Yesterday</small>
-            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-            	</a>
-            </li>  
-            <li>
-            	<a href="#" class="clearfix">
-            		<img src="assets/images/user_1.jpg" alt="" class="img-circle">
-            		<div class="friend-name">	
-            			<strong>Kate</strong>
-            		</div>
-            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-            		<small class="time text-muted">Yesterday</small>
-            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-            	</a>
-            </li>     
-            <li>
-            	<a href="#" class="clearfix">
-            		<img src="assets/images/user_2.jpg" alt="" class="img-circle">
-            		<div class="friend-name">	
-            			<strong>Kate</strong>
-            		</div>
-            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-            		<small class="time text-muted">Yesterday</small>
-            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-            	</a>
-            </li>        
-            <li>
-            	<a href="#" class="clearfix">
-            		<img src="assets/images/user_6.jpg" alt="" class="img-circle">
-            		<div class="friend-name">	
-            			<strong>Kate</strong>
-            		</div>
-            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-            		<small class="time text-muted">Yesterday</small>
-            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-            	</a>
-            </li>          
-            <li>
-            	<a href="#" class="clearfix">
-            		<img src="assets/images/user_5.jpg" alt="" class="img-circle">
-            		<div class="friend-name">	
-            			<strong>Kate</strong>
-            		</div>
-            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-            		<small class="time text-muted">Yesterday</small>
-            		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-            	</a>
-            </li>
-            <li>
-                <a href="#" class="clearfix">
-            		<img src="assets/images/user_2.jpg" alt="" class="img-circle">
-            		<div class="friend-name">	
-            			<strong>Jane Doe</strong>
-            		</div>
-            		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-            		<small class="time text-muted">5 mins ago</small>
-            	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-            	</a>
-            </li>                 
+           	{{//each}}
+			<input type="hidden" id="current-status-id" val="{{statusId}}"/>
         </ul>
 </script>
 
