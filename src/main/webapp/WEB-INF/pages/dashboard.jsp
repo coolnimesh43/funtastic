@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,30 +53,22 @@
 <body>
 	<div class="mdl-layout__container">
 		<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-
 			<header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600" id="conversation-title"> </header>
 			<!-- Add the conversation title here -->
-
-
 			<div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
 				<header class="demo-drawer-header" id="header-user-info">
-
 					<!-- Add user info here  -->
-
-
 				</header>
+				<h3>User Group</h3>
 				<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800" id="active-conversations">
-
 					<!-- Active conversations here -->
-
 				</nav>
 			</div>
 			<main class="mdl-layout__content mdl-color--grey-100">
 			<div class="mdl-grid demo-content">
-				<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-
-					<div class="col-md-8" id="chatResponseBlock"></div>
-
+				<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" id="user-add-section">
+				</div>
+				<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" id="existing-user-add-section">
 				</div>
 			</div>
 			</main>
@@ -95,5 +87,20 @@
 	<script type="text/javascript" src="assets/js/dashboard.js"></script>
 	<script type="text/javascript" src="assets/js/chatFunctions.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.chatOption.js"></script>
+
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h4>Create Group</h4>
+			<form id="group-add">
+				<input type="text" name="name" required />
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" id="create-group" class=" modal-action waves-effect waves-green btn-flat">Ok</a>
+			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		</div>
+	</div>
+
 </body>
 </html>

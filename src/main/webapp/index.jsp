@@ -32,7 +32,6 @@
 			</div>
 			<button data-target="modal1" class="btn modal-trigger">Modal</button>
 			<button data-target="modal2" class="btn modal-trigger">Modal</button>
-
 			<!-- Modal Structure -->
 			<div id="modal2" class="modal bottom-sheet">
 				<div class="modal-content">
