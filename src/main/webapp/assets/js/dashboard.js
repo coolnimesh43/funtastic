@@ -1,8 +1,13 @@
-var dashboard = {};
+var dashboard = dashboard || {};
 var smileSlider;
 var smilePosition = 0;
+var funtastic = funtastic || {};
+funtastic.admin = funtastic.admin || {};
+funtastic.admin.common = funtastic.admin.common || {};
 var $handlebarHelpers = $handlebarHelpers || {};
+var $websocketFunctions = $websocketFunctions || {};
 (function(common) {
+
 	var emojiData = [
 			"http://pix.iemoji.com/images/emoji/apple/ios-9/256/smiling-face-with-smiling-eyes.png",
 			"http://pix.iemoji.com/images/emoji/apple/ios-9/256/white-smiling-face.png",
@@ -54,9 +59,7 @@ var $handlebarHelpers = $handlebarHelpers || {};
 		dashboard.fetchGif("trending", "a");
 		dashboard.fetchRandomGif("random", "a");
 		dashboard.fetchMeme();
-		dashboard.fetchEmoji();
 	}, dashboard.eventHandler = function() {
-		$websocketFunctions.init();
 		$websocketFunctions.connect();
 
 		$(document).on("click", "#create-group-btn", function() {
@@ -90,15 +93,15 @@ var $handlebarHelpers = $handlebarHelpers || {};
 		$(document).on('click', ".emoji-button", function() {
 			$('#modal4').openModal();
 		});
-		
+
 		$(document).on("click", "#active-conversations a", function() {
 			var url = common.getBaseUrl() + "user";
 			dashboard.renderUserBlock($(this).data("group-id"));
 		});
 
-		$(document).on("click", ".collection li", function() {
+		$(document).on("click", "#meme-div li", function() {
 			var src = $(this).find('img').prop('src');
-			$websocketFunctions.sendMessage();
+			$websocketFunctions.sendMessage(src);
 		});
 
 		$(document).on("click", "[name='add-user-group']", function() {
@@ -123,7 +126,6 @@ var $handlebarHelpers = $handlebarHelpers || {};
 					common.apiCall(url, "DELETE", null, function(response) {
 						dashboard.renderExistingUserBlock();
 					}, function(error) {
-						alert("error");
 					});
 				});
 	}
@@ -137,6 +139,7 @@ var $handlebarHelpers = $handlebarHelpers || {};
 		};
 		$handlebarHelpers.renderTemplate("#_conversationTitle", templateData,
 				"#conversation-title");
+		// $(".mood-selector").
 		dashboard.initialiseSmileySlider();
 	}, dashboard.renderActiveConversationBlock = function() {
 		var templateData = {};
@@ -154,6 +157,9 @@ var $handlebarHelpers = $handlebarHelpers || {};
 					"#gif-div");
 		}, function(error) {
 		});
+	}, dashboard.fetchEmoji = function() {
+		$handlebarHelpers
+				.renderTemplate("#_emojiResponse", emojiData, "#emoji");
 	}, dashboard.fetchRandomGif = function(type, term) {
 		var url = common.getBaseUrl() + "comment/gif/" + type + "/" + term;
 		common.apiCall(url, "GET", null, function(response) {
@@ -176,10 +182,6 @@ var $handlebarHelpers = $handlebarHelpers || {};
 					"#meme-div");
 		}, function(error) {
 		});
-	},
-	dashboard.fetchEmoji = function() {
-			$handlebarHelpers.renderTemplate("#_emojiResponse", emojiData,
-					"#emoji");
 	}, dashboard.renderGroupBlock = function() {
 		var url = common.getBaseUrl() + "group";
 		common.apiCall(url, "GET", null, function(response) {
