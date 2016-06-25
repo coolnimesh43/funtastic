@@ -2,11 +2,13 @@ var dashboard = {};
 var smileSlider;
 var smilePosition = 0;
 var $handlebarHelpers = $handlebarHelpers || {};
+var commonFunctions = funtastic.admin.common;
 (function () {
     dashboard.init = function () {
         dashboard.renderConversationTitleBlock();
         dashboard.renderUserInfoBlock();
         dashboard.renderActiveConversationBlock();
+        dashboard.eventHandler();
     }, dashboard.renderUserInfoBlock = function () {
         var templateData = {
 
@@ -17,6 +19,7 @@ var $handlebarHelpers = $handlebarHelpers || {};
 
         };
         $handlebarHelpers.renderTemplate("#_conversationTitle", templateData, "#conversation-title");
+        // $(".mood-selector").
         dashboard.initialiseSmileySlider();
     }, dashboard.renderActiveConversationBlock = function () {
         var templateData = {
@@ -27,7 +30,7 @@ var $handlebarHelpers = $handlebarHelpers || {};
         smileSlider = new SmileySlider(document.getElementById("slider"))
 
         smileSlider.position(0); // make it sad
-        smileSlider.position(1) // make it happy
+        smileSlider.position(1); // make it happy
         
         var p = smileSlider.position() // get it's position
         smileSlider.position(p / 2) // make it half as happy
@@ -44,17 +47,46 @@ var $handlebarHelpers = $handlebarHelpers || {};
             success : function ( count ) {
             }
         });
-    }, dashboard.increaseSmile = function (){
+    }, dashboard.increaseSmile = function () {
         smilePosition += 0.1;
         smileSlider.position(smilePosition);
-    }, dashboard.decreaseSmile = function (){
+    }, dashboard.decreaseSmile = function () {
         smilePosition -= 0.1;
-        if (smilePosition < 0 ) {
+        if (smilePosition < 0) {
             smilePosition = 0;
         }
         smileSlider.position(smilePosition);
+    }, dashboard.eventHandler = function () {
+        $(document).on("change", "select", function () {
+            console.log("hereeeeee");
+            var value = $(this).val();
+            var jsonData = {
+                description : '',
+                mood : {
+                    id : value
+                }
+            };
+            $.ajax({
+                url : commonFunctions.getBaseUrl() + 'status',
+                data : JSON.stringify(jsonData),
+                method : "POST",
+                success : function ( count ) {
+                    console.log("here");
+                    var position = 0;
+                    if (value == '6') {
+                        position = 0;
+                    } else if (value == '5') {
+                        position = 0.25;
+                    } else if (value == '4') {
+                        position = 1;
+                    } else {
+                        position = 0.5;
+                    }
+                    smileSlider.position(position);
+                }
+            });
+        });
     }
-    
-    
+
     dashboard.init();
 })();

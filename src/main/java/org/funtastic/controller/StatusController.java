@@ -60,6 +60,7 @@ public class StatusController {
 		if (user != null) {
 			status.setCreatedBy(user.getId());
 			status.setUpdatedBy(user.getId());
+			status.setState(Boolean.TRUE);
 			Status saved = this.statusService.save(status);
 			if (saved != null) {
 				return new ResponseEntity<ResponsePOJO>(new ResponsePOJO(Boolean.TRUE, ""), HttpStatus.OK);
