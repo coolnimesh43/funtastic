@@ -19,6 +19,8 @@ import javax.validation.constraints.NotNull;
 
 import org.funtastic.enums.Gender;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "app_user")
 public class User extends AbstractEntity {
@@ -51,6 +53,7 @@ public class User extends AbstractEntity {
 			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "group_id", referencedColumnName = "id") })
 	@OrderBy("name ASC")
+	@JsonBackReference
 	private List<Group> groups = new ArrayList<>();
 
 	public User() {

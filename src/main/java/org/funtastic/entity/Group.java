@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "app_group")
 public class Group extends AbstractEntity {
@@ -17,6 +19,7 @@ public class Group extends AbstractEntity {
 	private String name;
 
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "groups")
+	@JsonManagedReference
 	private List<User> groupUsers = new ArrayList<>();
 
 	public Group() {

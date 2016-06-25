@@ -39,6 +39,7 @@ public class StatusController {
 	public ResponseEntity<List<Status>> get(HttpSession session, @RequestParam("groupId") Long groupId) {
 		LOG.debug("StatusController#get");
 		Group group = this.groupService.findById(groupId);
+		LOG.debug("Group is: {}", group);
 		if (group != null) {
 			List<Status> status = new ArrayList<>();
 			List<User> gUsers = group.getGroupUsers();
